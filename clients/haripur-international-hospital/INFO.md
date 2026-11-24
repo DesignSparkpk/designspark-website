@@ -1,41 +1,37 @@
 # Haripur International Hospital: client profile
 
-Research date: 24 Nov 2026. Sources are public directory listings; items marked ⚠️ need confirming (Google Maps / visit).
+Research date: 24 Nov 2026.
 
-## Basics
-| Item | Info | Confidence |
-|---|---|---|
-| Name | Haripur International Hospital | ✅ |
-| Type | Private hospital, listed as open 24/7 (Instacare) | ⚠️ confirm |
-| Address | Jheel Road, Haripur (Instacare) vs "Tarbela, Gheel Road" (Oladoc) | ⚠️ listings disagree |
-| Phone | 051-8151800 on Oladoc: probably Oladoc's own booking line, NOT the hospital | ⚠️ get real number from Google Maps / signboard |
-| Decision maker | Owner doctor / hospital administrator (unknown) | ⚠️ ask at reception |
+> ❌ Correction: the first research round said "no website". That was WRONG.
+> They have a website: https://haripurinternational.com/ (WordPress, built by MIK Services).
 
-## Online presence
-| Platform | Details |
+## Basics (from their own website)
+| Item | Info |
 |---|---|
-| Website | **None found** |
-| Instacare | https://instacare.pk/hospitals/haripur/jheel-road/haripur-international-hospital |
-| Oladoc | https://oladoc.com/pakistan/haripur/h/haripur-international-hospital/15740 |
-| Google Maps / Facebook | Not checked yet |
+| Name | Haripur International Hospital (HIH) |
+| Phone | 0995-628375 |
+| Email | appointments@haripurinternational.com |
+| CEO | Prof Dr. Akhtar Nawaz Khan (General Surgeon, FRCS UK) |
+| Map | https://goo.gl/maps/3sibp4obhEDPiiT9A |
+| Developer | MIK Services (https://mikservices.com/), also runs their hospital management system at hms.haripurinternational.com |
 
-## Why they need a website (pitch points)
-1. Patients searching online find only third-party listings with **conflicting addresses**.
-2. No place to see doctors, specialities, OPD timings, lab tests or emergency info.
-3. A WhatsApp appointment button + correct map pin brings patients directly.
-4. A professional site builds trust for a hospital that calls itself "International".
+## What their website already has
+- Online appointment booking with a doctor selection list
+- Doctors page: about 14+ doctors over 2 pages, with specialities and qualifications
+- Departments (Dental, Neuro Surgery, General Surgery, Cardiology) and services (Pharmacy, Labour Room, Lab, CT/MRI, Ultrasound, OT)
+- CEO message, vision, phone, email, map link
+- Works on mobile; clean blue/teal design
 
-## Approach (agreed)
-Demo first, then visit / message. Build a small one-page demo (not a full site), then show it to the administrator in person if possible.
+## Weak points found
+- Spelling mistakes in headings: "INTERNATIONSL" (homepage), "APOINTMENT" (appointment page)
+- Dead links that go nowhere: Facebook, YouTube, "Get Direction", "Read More About Us", "More Departments"
+- None of the 19 images on the homepage have alt text (bad for SEO and accessibility)
+- Homepage loads about 2.9 MB
+- No main navigation menu on the homepage
+- CEO message reads like advice to the hospital, not a message to patients
+- Content error: Dr. Syeda Sundus is listed as "Respiratory Physician / ICU" but the qualifications shown are Gynae/Obs
+- No WhatsApp button, no OPD timings, no lab test list or prices
 
-## Demo plan
-- Style: Minimalism + Bento Grid for departments (clean, trustworthy).
-- Sections: hero (name, 24/7 emergency, call + WhatsApp buttons) → departments → doctors (placeholders) → OPD timings → lab tests → location map → contact.
-
-## Still to collect
-- [ ] Correct phone number and address (Google Maps / signboard)
-- [ ] Logo and colours
-- [ ] Doctors list with specialities and timings
-- [ ] Departments and services, lab tests
-- [ ] Photos of building / reception (with permission)
-- [ ] Administrator name and contact
+## Verdict
+Low chance (~10–15%) for a new website: they already have a working site, online appointments and a developer (MIK Services) who also runs their hospital system. Not a priority target.
+Possible small offer only: fix list (typos, dead links, WhatsApp button, OPD timings, SEO), but MIK Services likely handles maintenance.
