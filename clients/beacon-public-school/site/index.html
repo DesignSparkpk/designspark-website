@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Beacon Public School &amp; College, Haripur | Admissions Open, Playgroup to FSc</title>
 <meta name="description" content="Beacon Public School & College Haripur: Playgroup to FSc and pre-cadet classes on 3 campuses (Shakar Shah Road, TIP Housing Colony, Mankrai). Apply on WhatsApp, see fees, transport and campuses. English and Urdu.">
-<meta name="theme-color" content="#0b2545">
+<meta name="theme-color" content="#0a2a4f">
 <meta property="og:title" content="Beacon Public School & College, Haripur">
 <meta property="og:description" content="Playgroup to FSc on 3 campuses in Haripur. Admissions open. Apply on WhatsApp.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b2545'/%3E%3Cpath d='M32 12l6 14h-12z' fill='%23f2b705'/%3E%3Crect x='27' y='26' width='10' height='24' rx='2' fill='%23fff'/%3E%3C/svg%3E">
+<meta property="og:image" content="img/logo-160.png">
+<link rel="icon" type="image/png" href="img/favicon.png">
 <style>
 :root{
-  --navy:#0b2545; --navy-2:#13315c; --gold:#f2b705; --gold-soft:#fff4cc;
+  --navy:#0a2a4f; --navy-2:#0d4f8f; --gold:#fbbd13; --gold-soft:#fff4cc; --brand:#048fd8; --flag:#1e6b3a;
   --bg:#f6f7fb; --tile:#fff; --text:#111827; --muted:#4b5563; --line:#e5e7eb;
   --mint:#dff6ec; --sky:#e3efff; --lav:#ece8ff; --peach:#ffeadb;
   --wa:#1f9d55; --radius:22px; --gap:16px;
@@ -81,15 +82,18 @@ nav.main a:hover{background:var(--sky)}
 }
 
 /* hero */
-.hero{background:radial-gradient(900px 400px at 85% 10%,#1d4e89 0,transparent 60%),linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;padding:64px 0 120px;position:relative;overflow:hidden}
+.hero{background:radial-gradient(800px 420px at 80% 20%,#048fd855 0,transparent 65%),linear-gradient(160deg,var(--navy) 30%,var(--navy-2));color:#fff;padding:64px 0 120px;position:relative;overflow:hidden}
 .hero .container{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
 .pill{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 14px}
 html[lang=ur] .pill{letter-spacing:0;text-transform:none}
 .hero h1{font-size:clamp(2.2rem,5.2vw,3.8rem);line-height:1.05;letter-spacing:-.025em;margin:18px 0 14px}
 .hero p.lead{font-size:1.15rem;color:#dbe4f3;max-width:38ch;margin:0 0 28px}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.beacon-art{justify-self:center;width:min(360px,80%)}
-@media (max-width:860px){.hero .container{grid-template-columns:1fr}.beacon-art{display:none}.hero{padding:44px 0 110px}}
+.beacon-art{justify-self:center;width:min(340px,80%);text-align:center}
+.beacon-art img{width:100%;height:auto;filter:drop-shadow(0 24px 40px #0008)}
+.motto{margin-top:14px;color:var(--gold);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.9rem}
+html[lang=ur] .motto{letter-spacing:0}
+@media (max-width:860px){.hero .container{grid-template-columns:1fr;gap:18px}.beacon-art{order:-1;width:120px;justify-self:start}.beacon-art .motto{display:none}.hero{padding:32px 0 110px}}
 
 /* fact strip */
 .facts{margin-top:-72px;position:relative;z-index:2}
@@ -122,6 +126,23 @@ h2{font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.15;letter-spacing:-.02em;c
 .icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);font-size:1.3rem}
 @media (max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.bento{grid-template-columns:1fr}.span-2{grid-column:auto}.row-2{grid-row:auto}}
+
+
+/* why + notices */
+.why{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px;margin-top:-20px}
+.pillars{font-weight:800;color:var(--flag);letter-spacing:.08em;text-transform:uppercase;margin:0 0 18px}
+html[lang=ur] .pillars{letter-spacing:0}
+.feat{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.feat li{display:flex;gap:10px;align-items:center;background:var(--bg);border-radius:14px;padding:12px 14px;color:var(--navy)}
+.feat span{font-size:1.3rem}
+.why-img{margin:0}.why-img img{border-radius:20px;width:100%;height:auto;max-height:520px;object-fit:cover;object-position:top}
+.notices{display:grid;gap:var(--gap)}
+.notice{display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.notice img{border-radius:16px;width:100%;height:auto}
+.notice h3{color:var(--navy);font-size:1.4rem;margin:12px 0 8px}
+.notice p{color:var(--muted);margin:0 0 16px}
+@media (max-width:860px){.why{grid-template-columns:1fr;padding:24px}.notice{grid-template-columns:1fr}.notice img{max-width:360px}}
+@media (max-width:480px){.feat{grid-template-columns:1fr}}
 
 /* campuses */
 .campuses{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
@@ -212,12 +233,13 @@ footer .bottom{border-top:1px solid #ffffff1a;margin-top:36px;padding-top:18px;f
 <header class="site">
   <div class="container">
     <a class="brand" href="#top" aria-label="Beacon Public School and College, home">
-      <svg width="46" height="46" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0b2545"/><path d="M32 10l7 15H25z" fill="#f2b705"/><path d="M14 22l11 3M50 22l-11 3" stroke="#f2b705" stroke-width="3" stroke-linecap="round"/><rect x="26" y="26" width="12" height="26" rx="2" fill="#fff"/><rect x="20" y="50" width="24" height="5" rx="2" fill="#fff"/></svg>
+      <img src="img/logo-160.webp" width="46" height="48" alt="" style="width:46px;height:auto">
       <span><b data-ur="بیکن پبلک اسکول اینڈ کالج">Beacon Public School &amp; College</b><small data-ur="ہری پور، خیبر پختونخوا">Haripur, Khyber Pakhtunkhwa</small></span>
     </a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" data-ur="مینو">Menu</button>
     <nav class="main" id="mainNav" aria-label="Main">
       <ul>
+        <li><a href="#why" data-ur="بیکن کیوں">Why Beacon</a></li>
         <li><a href="#programmes" data-ur="کلاسز">Programmes</a></li>
         <li><a href="#campuses" data-ur="کیمپس">Campuses</a></li>
         <li><a href="#fees" data-ur="فیس">Fees</a></li>
@@ -236,25 +258,14 @@ footer .bottom{border-top:1px solid #ffffff1a;margin-top:36px;padding-top:18px;f
     <div>
       <span class="pill" data-ur="داخلے جاری ہیں، سیشن ۲۰۲۷-۲۸">Admissions open · Session 2027-28</span>
       <h1 data-ur="بیکن پبلک اسکول اینڈ کالج، ہری پور">Beacon Public School &amp; College, Haripur</h1>
-      <p class="lead" data-ur="پلے گروپ سے ایف ایس سی تک، اور پری کیڈٹ کلاسز۔ ہری پور کے تین کیمپسز میں انگلش میڈیم تعلیم، ڈیجیٹل لرننگ اور غیر نصابی سرگرمیاں۔">Playgroup to FSc, plus pre-cadet classes. English-medium learning, digital classrooms and co-curricular activities on three campuses across Haripur.</p>
+      <p class="lead" data-ur="ذہنوں کی پرورش، لیڈروں کی تیاری۔ پلے گروپ سے ایف ایس سی تک اور پری کیڈٹ کلاسز، ہری پور کے کیمپسز میں۔">Nurturing minds. Shaping leaders. Playgroup to FSc, plus pre-cadet classes, on campuses across Haripur.</p>
       <div class="cta-row">
         <a class="btn btn-gold" href="#apply" data-ur="آن لائن داخلہ فارم">Apply online</a>
         <a class="btn btn-wa" href="https://wa.me/923005148824?text=Assalam%20o%20Alaikum%2C%20I%20want%20admission%20information%20for%20Beacon%20Public%20School." target="_blank" rel="noopener" data-ur="واٹس ایپ پر پوچھیں">Ask on WhatsApp</a>
         <a class="btn btn-ghost" href="#campuses" data-ur="قریبی کیمپس تلاش کریں">Find your campus</a>
       </div>
     </div>
-    <svg class="beacon-art" viewBox="0 0 320 340" role="img" aria-label="Illustration of a lighthouse beacon shining">
-      <defs><radialGradient id="glow" cx="50%" cy="22%" r="60%"><stop offset="0" stop-color="#f2b705" stop-opacity=".55"/><stop offset="1" stop-color="#f2b705" stop-opacity="0"/></radialGradient></defs>
-      <circle cx="160" cy="80" r="150" fill="url(#glow)"/>
-      <path d="M160 70L20 20v100zM160 70L300 20v100z" fill="#f2b705" opacity=".16"/>
-      <path d="M135 110h50l14 190h-78z" fill="#fff"/>
-      <path d="M128 160h64M124 220h72" stroke="#0b2545" stroke-width="12"/>
-      <rect x="128" y="62" width="64" height="48" rx="8" fill="#13315c" stroke="#fff" stroke-width="4"/>
-      <circle cx="160" cy="86" r="14" fill="#f2b705"/>
-      <path d="M118 62l42-30 42 30z" fill="#fff"/>
-      <path d="M60 300h200" stroke="#ffffff55" stroke-width="4" stroke-linecap="round"/>
-      <path d="M94 318h132" stroke="#ffffff33" stroke-width="4" stroke-linecap="round"/>
-    </svg>
+    <div class="beacon-art"><img src="img/logo.webp" width="616" height="640" alt="Beacon Public School Haripur crest with torch, Pakistan flags and the motto Aspire, Acquire, Inspire"><p class="motto">Aspire · Acquire · Inspire</p></div>
   </div>
 </section>
 
@@ -310,6 +321,45 @@ footer .bottom{border-top:1px solid #ffffff1a;margin-top:36px;padding-top:18px;f
   </div>
 </section>
 
+<section class="block" id="why" aria-labelledby="why-h" style="padding-top:0">
+  <div class="container">
+    <div class="why">
+      <div class="why-text">
+        <span class="kicker" data-ur="بیکن کیوں">Why Beacon</span>
+        <h2 id="why-h" data-ur="صرف اسکول نہیں، مستقبل کا نظام">Not just schooling. A system for the future.</h2>
+        <p class="pillars" data-ur="نظم و ضبط · تعلیم · کردار">Discipline · Academics · Character</p>
+        <ul class="feat">
+          <li><span aria-hidden="true">👩‍🏫</span><b data-ur="تجربہ کار اساتذہ">Experienced faculty</b></li>
+          <li><span aria-hidden="true">📚</span><b data-ur="ہمہ جہت تعلیم">Holistic learning</b></li>
+          <li><span aria-hidden="true">🏅</span><b data-ur="کردار سازی">Character building</b></li>
+          <li><span aria-hidden="true">🏫</span><b data-ur="جدید سہولیات">Modern facilities</b></li>
+        </ul>
+        <p class="sub" style="margin:18px 0 0" data-ur="بیکن پبلک اسکول، جہاں ہر بچہ چمکتا ہے۔">Beacon Public School: where every child shines.</p>
+      </div>
+      <figure class="why-img"><img src="img/poster-cadet.webp" width="720" height="1081" loading="lazy" alt="Beacon pre-cadet student in uniform with the BPS badge. Not just schooling, a system for the future: discipline, academics, character."></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="notices" aria-labelledby="not-h" style="background:#fff">
+  <div class="container">
+    <span class="kicker" data-ur="نوٹس بورڈ">Notice board</span>
+    <h2 id="not-h" data-ur="بیکن کی تازہ خبریں">Latest from Beacon</h2>
+    <p class="sub" data-ur="داخلوں اور تقریبات کے اعلانات۔ ہر نیا پوسٹر یہاں بھی لگے گا اور گوگل پر بھی نظر آئے گا۔">Admission and event announcements. Every new poster appears here too, with its text readable by Google.</p>
+    <div class="notices">
+      <article class="notice">
+        <img src="img/poster-admissions.webp" width="720" height="1081" loading="lazy" alt="Beacon Public School admissions open poster: Montessori Campus, Playgroup to Grade 8, on Main Shakar Shah Road, Haripur.">
+        <div>
+          <span class="pill" data-ur="داخلے جاری">Admissions open</span>
+          <h3 data-ur="مونٹیسوری کیمپس: پلے گروپ تا گریڈ ۸">Montessori Campus: Playgroup to Grade 8</h3>
+          <p data-ur="مضبوط بنیادیں، روشن مستقبل۔ گریڈ ۸ میں بھی داخلے جاری ہیں۔ مقام: مین شکر شاہ روڈ، ہری پور۔">Building strong foundations, inspiring bright futures. Grade 8 admissions are also open. Location: Main Shakar Shah Road, Haripur.</p>
+          <a class="btn btn-wa" href="https://wa.me/923005148824?text=Assalam%20o%20Alaikum%2C%20I%20saw%20the%20admissions%20notice%20for%20the%20Montessori%20Campus." target="_blank" rel="noopener" data-ur="واٹس ایپ پر معلومات لیں">Ask on WhatsApp</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="campuses" aria-labelledby="camp-h" style="background:#fff">
   <div class="container">
     <span class="kicker" data-ur="ہمارے کیمپس">Our campuses</span>
@@ -319,8 +369,8 @@ footer .bottom{border-top:1px solid #ffffff1a;margin-top:36px;padding-top:18px;f
       <article class="campus">
         <div class="map" aria-hidden="true"><svg viewBox="0 0 300 130" preserveAspectRatio="none"><path d="M0 90C80 70 120 110 300 60" stroke="#fff" stroke-width="10" fill="none"/><path d="M60 0v130M210 0v130" stroke="#ffffffaa" stroke-width="6"/><circle cx="150" cy="72" r="11" fill="#0b2545"/><circle cx="150" cy="72" r="4" fill="#f2b705"/></svg></div>
         <div class="body">
-          <h3 data-ur="مین کیمپس">Main Campus</h3>
-          <p data-ur="شکر شاہ روڈ، ہری پور">Shakar Shah Road, Haripur</p>
+          <h3 data-ur="مین / مونٹیسوری کیمپس">Main / Montessori Campus</h3>
+          <p data-ur="مین شکر شاہ روڈ، ہری پور · پلے گروپ تا گریڈ ۸">Main Shakar Shah Road, Haripur · Playgroup to Grade 8</p>
           <div class="actions">
             <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Beacon+Public+School+Shakar+Shah+Road+Haripur" target="_blank" rel="noopener" data-ur="نقشہ">Map</a>
             <a class="btn btn-line" href="tel:+923005148824" data-ur="کال کریں">Call</a>
@@ -429,7 +479,7 @@ footer .bottom{border-top:1px solid #ffffff1a;margin-top:36px;padding-top:18px;f
         <label class="full"><span data-ur="کیمپس">Campus</span>
           <select name="campus" required>
             <option value="" data-ur="کیمپس منتخب کریں">Select campus</option>
-            <option>Main Campus, Shakar Shah Road</option><option>TIP Campus, Housing Colony</option><option>Mankrai Campus</option>
+            <option>Main / Montessori Campus, Shakar Shah Road</option><option>TIP Campus, Housing Colony</option><option>Mankrai Campus</option>
           </select></label>
         <label class="full"><span data-ur="کوئی سوال (اختیاری)">Any question (optional)</span><textarea name="msg" rows="2"></textarea></label>
         <button class="btn btn-wa full" type="submit" data-ur="واٹس ایپ پر بھیجیں">Send on WhatsApp</button>
@@ -459,7 +509,7 @@ footer .bottom{border-top:1px solid #ffffff1a;margin-top:36px;padding-top:18px;f
     <div class="cols">
       <div>
         <h3 data-ur="بیکن پبلک اسکول اینڈ کالج">Beacon Public School &amp; College</h3>
-        <p data-ur="پلے گروپ سے ایف ایس سی تک، ہری پور کے تین کیمپسز میں۔">Playgroup to FSc on three campuses in Haripur.</p>
+        <img src="img/logo-160.webp" width="77" height="80" alt="" style="width:64px;height:auto;margin-bottom:10px"><p style="margin:0 0 6px;color:var(--gold);font-weight:800;letter-spacing:.12em">ASPIRE · ACQUIRE · INSPIRE</p><p data-ur="جہاں ہر بچہ چمکتا ہے۔ پلے گروپ سے ایف ایس سی تک، ہری پور میں۔">Where every child shines. Playgroup to FSc in Haripur.</p>
       </div>
       <div>
         <h3 data-ur="رابطہ">Contact</h3>
@@ -472,7 +522,7 @@ footer .bottom{border-top:1px solid #ffffff1a;margin-top:36px;padding-top:18px;f
       <div>
         <h3 data-ur="کیمپس">Campuses</h3>
         <ul>
-          <li data-ur="مین کیمپس، شکر شاہ روڈ">Main Campus, Shakar Shah Road</li>
+          <li data-ur="مین / مونٹیسوری کیمپس، مین شکر شاہ روڈ">Main / Montessori Campus, Main Shakar Shah Road</li>
           <li data-ur="ٹی آئی پی کیمپس، ہاؤسنگ کالونی روڈ ۱۸">TIP Campus, Housing Colony Road 18</li>
           <li data-ur="مانکرائی کیمپس، بی ایچ یو کے قریب">Mankrai Campus, near BHU</li>
         </ul>

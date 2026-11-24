@@ -41,3 +41,17 @@ Research date: 24 Nov 2026. Website check done: direct name search, "edu.pk" sea
 - [ ] Principal / owner name (decision maker)
 - [ ] Classes, fee structure, admission dates
 - [ ] Results, achievements, photos (from Facebook with permission)
+
+## Confirmed from the school's own posters (sent by user, 24 Nov 2026)
+- Motto: **Aspire · Acquire · Inspire**
+- Logo: blue shield crest with torch, two Pakistan flags, globe, "B.P.S." ribbon, "Haripur"
+- Taglines: "Nurturing minds. Shaping leaders.", "Building strong foundations, inspiring bright futures!", "Beacon Public School: where every child shines!", "Not just schooling. A system for the future." "Discipline | Academics | Character", "Built together. Built right."
+- Montessori Campus: Main Shakar Shah Road, Haripur, Playgroup to Grade 8; Grade 8 admissions open
+- Features on poster: experienced faculty, holistic learning, character building, modern facilities
+- WhatsApp: +92 300 5148824
+- Social handle on poster: BeaconPublicSchoolHaripur (Facebook + Instagram); Facebook page URL confirmed as facebook.com/bpsharipur, Instagram URL not confirmed
+- Also listed: "Beacon Public School Boys Campus" on Yandex Maps; separate boys and girls school codes with BISE Abbottabad
+
+## Site assets
+- site/img/logo.webp, logo-160.*, favicon.png: crest cut out from the school's own logo image
+- site/img/poster-admissions.webp, poster-cadet.webp: the school's own posters
