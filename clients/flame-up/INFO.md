@@ -28,3 +28,18 @@ Not readable online (Foodpanda bot check). Known categories: burgers, pizza, win
 |---|---|---|
 | Flame On (Abbottabad + Haripur) | flameon.pk | Blink ordering template: opens with a delivery/pickup popup, ~1.6 MB, red brand |
 | Love n' Grill (Safdar Height, GT Road) | lovengrill.pk | Custom dark site with orange flames, full menu with photos, cart, WhatsApp delivery. Strong: the bar to beat |
+
+## Menu (from Flame Up's own menu card, shared by user)
+Special offers: Deal 1 Rs 790 (Bazinga burger, fries, drink) · Deal 2 Rs 680 (Reggy burger, fries, drink) · Blazing Combo Rs 1,499 (medium pizza, Cordoba sandwich, 1 L drink) · Deal 4 Rs 1,949 (medium pizza, 10 hot wings, 1.5 L)
+Premium: Cheesy Bite Rs 3,220 (2 large pizzas, 1.5 L) · Friends Rs 2,340 (5 Bazinga, 1.5 L) · Family Rs 2,430 (large pizza, 20 hotshots, 1.5 L) · Flameup Deal Rs 2,690 (large pizza, platter, 1.5 L)
+New: Minty Club Rs 1,650 · Minty Melte Rs 2,250 · Bazinga Deal Rs 1,400
+Pizzas: Chicken Cheese Stuffed and Doner, M 1,420 / L 1,890 / XL 2,599
+From TikTok: Blazed Beast Burger Rs 499 · Club Sandwich deal Rs 580 · Mega Deal Rs 2,450 (3 zingers, medium special pizza, 1.5 L)
+Second phone: 0314-1401155. Tagline on menu: "Every bite is a new adventure!"
+TikTok also shows a **rooftop** used for birthdays, anniversaries and events.
+
+## Website (site/)
+Single page, Flame Up green + yellow, bold street-food style. Hero: their TikTok video (desktop: 3-video wall), logo cut out with Adobe. Deals with tabs, sized pizzas, WhatsApp cart (order type, address, totals), rooftop events, visit info.
+Checks: Lighthouse mobile 98/100/100/100, desktop 100×4; axe 0; HTML 0 errors; no responsive issues 320–1920 px.
+
+**Media note:** the hero pizza montage carries a food creator's watermark ("Explorewithjawad"). Ask Flame Up for their original clips or the creator's permission before going live. Do not crop the watermark out.
