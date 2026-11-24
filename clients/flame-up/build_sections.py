@@ -37,7 +37,25 @@ ICONS = {
     "plus": '<path d="M12 5v14M5 12h14"/>',
     "minus": '<path d="M5 12h14"/>',
     "check": '<path d="M20 6 9 17l-5-5"/>',
+    "x": '<path d="M18 6 6 18M6 6l12 12"/>',
+    "trash": '<path d="M3 6h18M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6M18.5 6l-.9 13.1a2 2 0 0 1-2 1.9H8.4a2 2 0 0 1-2-1.9L5.5 6"/><path d="M10 10.5v6M14 10.5v6"/>',
+    "bike": '<circle cx="5.5" cy="17.5" r="3"/><circle cx="18.5" cy="17.5" r="3"/><path d="M5.5 17.5h5l3.5-7h3.2l1.3 7"/><path d="M14 6h2.6l.6 4.5M8 10.5h6"/>',
+    "bag": '<path d="M5 8h14l-1.1 11.2a2 2 0 0 1-2 1.8H8.1a2 2 0 0 1-2-1.8z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/>',
+    "table": '<path d="M3 10h18M6 10v10M18 10v10M8 6.5h8L18 10H6z"/><path d="M6 15h12"/>',
+    "menu": '<path d="M5 3.5h11a3 3 0 0 1 3 3v14H8a3 3 0 0 1-3-3z"/><path d="M9 8.5h6M9 12.5h6M9 16.5h3.5"/>',
+    "cart": '<path d="M3 4h2.2l2.3 11h10.8l2.2-8H6.4"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/>',
+    "user": '<circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/>',
+    "note": '<path d="M4 4h16v11l-5 5H4z"/><path d="M15 20v-5h5M8 9h8M8 12.5h5"/>',
+    "arrow": '<path d="M5 12h14M13 6l6 6-6 6"/>',
 }
+
+WA_PATH = ('M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6z'
+           'm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4'
+           'c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.5 2.4 3.6 5.8 5c2.2.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5s.3-1.3.2-1.5-.3-.2-.6-.4z')
+
+
+def wa_icon(cls="ic-wa"):
+    return f'<svg class="{cls}" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" stroke="none" d="{WA_PATH}"/></svg>'
 
 
 def sprite():
@@ -69,19 +87,20 @@ def tap(item_id, name, price):
     return f'<button type="button" class="tap" data-tap="{item_id}" aria-label="Add {esc(name)}, {rs(price)}, to order"></button>'
 
 
-def item_attrs(item_id, name, price):
-    return f'data-item="{item_id}" data-name="{esc(name)}" data-price="{price}"'
+def item_attrs(item_id, name, price, thumb="", icon="", color=""):
+    extra = f' data-thumb="{thumb}"' if thumb else f' data-icon="{icon}" data-color="{color}"'
+    return f'data-item="{item_id}" data-name="{esc(name)}" data-price="{price}"{extra}'
 
 
 # ---------- menu ----------
 NEW = [
     dict(id="mega", name="Mega Deal", price=2450, img="mega-spread", w=720, h=720, tag="Limited time", tagc="red",
          alt="Flame Up pizza with cold drinks, fries and dip on a table",
-         desc="3 Zingers · 1 Flameup Medium Special pizza · 1.5 litre cold drink", big=True),
+         desc="3 Zingers\u00a0· 1 Flameup Medium Special pizza\u00a0· 1.5 litre cold drink", big=True),
     dict(id="beast", name="Blazed Beast Burger", price=499, img="burger", w=720, h=720, tag="New flavour", tagc="",
-         alt="Blazed Beast Burger with lettuce, tomato and cheese on a sesame bun", desc="Our loaded signature burger"),
+         alt="Blazed Beast Burger with lettuce, tomato and cheese on a sesame bun", desc="Lettuce, tomato and cheese in a sesame bun"),
     dict(id="club", name="Club Sandwich Deal", price=580, img="club-sandwich", w=720, h=720, tag="", tagc="",
-         alt="Club sandwich pieces in red baskets with fries and white dip", desc="4 pcs · regular fries · white dip"),
+         alt="Club sandwich pieces in red baskets with fries and white dip", desc="4 pcs\u00a0· regular fries\u00a0· white dip"),
 ]
 
 DEALS = {
@@ -108,12 +127,12 @@ PIZZAS = [
     dict(id="stuffed", name="Chicken Cheese Stuffed Pizza", img="stuffed-cheesepull",
          alt="Long cheese pull from a Flame Up stuffed crust pizza", desc="Cheese-stuffed crust loaded with chicken."),
     dict(id="doner", name="Doner Pizza", img="pizza-top",
-         alt="Flame Up pizza with olives and chicken, fresh from the oven", desc="Doner-style chicken, peppers and olives."),
+         alt="Flame Up pizza with olives and chicken, fresh from the oven", desc="Doner chicken, creamy sauce and olives."),
 ]
 SIZES = [("M", 1420), ("L", 1890), ("XL", 2599)]
 
 KITCHEN = [
-    ("Beef Burger", "beef-burger", "Flame Up Beef Burger with cheese and tomato on a plate", "Our new king of burgers: a juicy beef patty, cheese and fresh veg.", True),
+    ("Beef Burger", "beef-burger", "Flame Up Beef Burger with cheese and tomato on a plate", "Finally launched at Flame Up: a juicy beef patty with cheese and fresh veg.", True),
     ("Pizza Stacker", "pizza-stacker", "Flame Up Pizza Stacker in a box with fries on top", "Layers of cheesy, saucy goodness, stacked and loaded with fries.", False),
     ("Grilled Bite Pizza", "grilled-bite", "Flame Up Special Grilled Bite Pizza on the rooftop table", "The Flame Up special: grilled chicken bites with a creamy drizzle.", False),
 ]
@@ -140,8 +159,18 @@ def wa_link(text):
     return f"https://wa.me/{WA}?text={quote(text)}"
 
 
+TICKER = ["New: Chicken Cheese Stuffed Pizza", "New: Beef Burger", "Doner Pizza from Rs 1,420", "Blazed Beast Burger Rs 499",
+          "Club Sandwich Deal Rs 580", "Birthday setups on the rooftop", "Order on WhatsApp 0336-2222081"]
+
+
+def ticker():
+    one = "".join(f'<li>{ic("flame", "tk-ic")}{esc(t)}</li>' for t in TICKER)
+    two = "".join(f'<li aria-hidden="true">{ic("flame", "tk-ic")}{esc(t)}</li>' for t in TICKER)
+    return (f'<section class="ticker" aria-label="Today at Flame Up">\n  <ul class="ticker-track">{one}{two}</ul>\n</section>\n')
+
+
 def build():
-    out = []
+    out = [ticker()]
     # NEW & HOT
     out.append('<section class="sec cream" id="new" aria-labelledby="new-h">\n  <div class="wrap">')
     out.append(head("Fresh off the flame", "New &amp; hot", "new-h", "Tap any card to add it to your order."))
@@ -149,7 +178,7 @@ def build():
     for it in NEW:
         cls = "hot-card big" if it.get("big") else "hot-card"
         tag = f'<span class="sticker {it["tagc"]}">{it["tag"]}</span>' if it["tag"] else ""
-        out.append(f'''      <article class="{cls}" {item_attrs(it["id"], it["name"], it["price"])}>
+        out.append(f'''      <article class="{cls}" {item_attrs(it["id"], it["name"], it["price"], thumb="img/thumb/" + it["img"] + ".webp")}>
         {tap(it["id"], it["name"], it["price"])}
         <img src="img/{it["img"]}.webp" width="{it["w"]}" height="{it["h"]}" alt="{esc(it["alt"])}" loading="lazy">
         <div class="hot-shade" aria-hidden="true"></div>
@@ -177,7 +206,7 @@ def build():
         for did, name, price, color, tag, items in deals:
             lis = "".join(f'<li>{ic(i, "ic-i")}<span>{esc(t)}</span></li>' for i, t in items)
             tg = f'<span class="sticker red">{tag}</span>' if tag else ""
-            out.append(f'''      <article class="deal {color}" {item_attrs(did, name, price)}>
+            out.append(f'''      <article class="deal {color}" {item_attrs(did, name, price, icon=items[0][0], color=color)}>
         {tap(did, name, price)}
         {ic(items[0][0], "deal-mark")}{tg}
         <h3>{esc(name)}</h3>
@@ -185,7 +214,7 @@ def build():
         <div class="buy"><span class="price">{rs(price)}</span>{stepper(did, name)}</div>
       </article>''')
         out.append("    </div>")
-    out.append('    <p class="note">All prices include taxes. Prices from Flame Up\'s menu; please confirm when ordering.</p>\n  </div>\n</section>\n')
+    out.append('    <p class="note">Prices from Flame Up\'s menu card. Please confirm when you order.</p>\n  </div>\n</section>\n')
 
     # PIZZAS
     out.append('<section class="sec cream" id="pizza" aria-labelledby="pizza-h">\n  <div class="wrap">')
@@ -195,7 +224,7 @@ def build():
         radios = "".join(
             f'<label><input type="radio" name="sz-{p["id"]}" value="{s}|{pr}"{" checked" if s == "M" else ""}><span>{s}<b>{pr:,}</b></span></label>'
             for s, pr in SIZES)
-        out.append(f'''      <article class="pz" data-pizza="{p["id"]}" data-name="{esc(p["name"])}">
+        out.append(f'''      <article class="pz" data-pizza="{p["id"]}" data-name="{esc(p["name"])}" data-thumb="img/thumb/{p["img"]}.webp">
         <div class="pz-img"><img src="img/{p["img"]}.webp" width="720" height="720" alt="{esc(p["alt"])}" loading="lazy"><span class="sticker red">New</span></div>
         <div class="pz-body">
           <h3>{esc(p["name"])}</h3>
@@ -215,7 +244,7 @@ def build():
         out.append(f'''      <article class="kcard">
         <div class="k-img"><img src="img/{img}.webp" width="720" height="600" alt="{esc(alt)}" loading="lazy">{tag}</div>
         <div class="kbody"><h3>{esc(name)}</h3><p>{esc(desc)}</p>
-        <a class="ask" href="{wa_link(f"Assalam o Alaikum Flame Up, what is the price of the {name}?")}" target="_blank" rel="noopener">{ic("phone", "ic-s")}Ask price on WhatsApp</a></div>
+        <a class="ask" href="{wa_link(f"Assalam o Alaikum Flame Up, what is the price of the {name}?")}" target="_blank" rel="noopener">{wa_icon("ic-s")}Ask price on WhatsApp</a></div>
       </article>''')
     out.append("    </div>\n  </div>\n</section>\n")
 
@@ -233,7 +262,7 @@ def build():
       <ul class="chips">
         <li>{ic("cake", "ic-s")}Birthday setups</li><li>{ic("heart", "ic-s")}Anniversaries</li><li>{ic("users", "ic-s")}Girls' day out</li><li>{ic("star", "ic-s")}Student deals</li><li>{ic("flame", "ic-s")}Family nights</li>
       </ul>
-      <a class="btn btn-yellow" href="{wa_link("Assalam o Alaikum Flame Up, I want to book the rooftop for an event. Date: , Guests: ")}" target="_blank" rel="noopener">Book an event on WhatsApp</a>
+      <a class="btn btn-yellow" href="{wa_link("Assalam o Alaikum Flame Up, I want to book the rooftop for an event. Date: , Guests: ")}" target="_blank" rel="noopener">{wa_icon("ic-s")}Book an event on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -241,7 +270,7 @@ def build():
 
     # VIBE
     out.append('<section class="sec vibe" id="vibe" aria-labelledby="vibe-h">\n  <div class="wrap">')
-    out.append(head("Inside Flame Up", "Come for the food.<br>Stay for the vibe.", "vibe-h", "Green booths, warm lights, hanging plants and a rooftop that glows at sunset. Haripur's favourite hangout on GT Road."))
+    out.append(head("Inside Flame Up", "Come for the food.<br>Stay for the vibe.", "vibe-h", "Green booths, warm lights, hanging plants and a rooftop that glows at sunset. Your hangout on GT Road."))
     out.append('    <div class="mosaic">')
     for img, alt, cap, cls in VIBE:
         c = f' class="{cls}"' if cls else ""
@@ -265,7 +294,7 @@ def build():
       </div>
     </div>
     <div class="social-card">
-      <img src="img/logo-badge-160.png" width="96" height="96" alt="">
+      <img src="img/logo-badge-160.webp" width="96" height="96" alt="" loading="lazy">
       <p class="big">2M+</p>
       <p>views on Flame Up's TikTok videos</p>
       <div class="socials">
@@ -280,6 +309,116 @@ def build():
     return "\n".join(out)
 
 
+MAPS = "https://www.google.com/maps/search/?api=1&amp;query=Flame+Up+Jahangir+Khan+Plaza+GT+Road+Haripur"
+
+
+def chrome():
+    order_wa = wa_link("Assalam o Alaikum Flame Up, I want to place an order.")
+    return f'''<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="img/logo-badge-160.webp" width="72" height="72" alt="" loading="lazy">
+      <p class="foot-name">Flame Up Haripur</p>
+      <p class="foot-tag">Grill is old. We like it flamed.</p>
+      <div class="socials">
+        <a href="https://www.tiktok.com/@flameup_haripur" target="_blank" rel="noopener" aria-label="Flame Up on TikTok">{ic("tiktok")}</a>
+        <a href="https://www.instagram.com/flameup_haripur/" target="_blank" rel="noopener" aria-label="Flame Up on Instagram">{ic("insta")}</a>
+        <a href="https://www.facebook.com/p/Flame-Up-61565751334650/" target="_blank" rel="noopener" aria-label="Flame Up on Facebook">{ic("fb")}</a>
+      </div>
+    </div>
+    <nav class="foot-col" aria-labelledby="fm-h">
+      <h2 class="foot-h" id="fm-h">Menu</h2>
+      <ul class="foot-links">
+        <li><a href="#new">New &amp; hot</a></li><li><a href="#deals">Deals</a></li><li><a href="#pizza">Signature pizzas</a></li>
+        <li><a href="#kitchen">Kitchen favourites</a></li><li><a href="#rooftop">Rooftop events</a></li>
+      </ul>
+    </nav>
+    <div class="foot-col">
+      <h2 class="foot-h">Visit</h2>
+      <ul class="foot-info">
+        <li>{ic("pin", "ic-s")}<a href="{MAPS}" target="_blank" rel="noopener">1st Floor, Jahangir Khan Plaza, Sabzi Mandi Mor, G.T. Road, Haripur</a></li>
+        <li>{ic("clock", "ic-s")}<span>Every day, 12 PM – 12 AM</span></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">Order</h2>
+      <ul class="foot-info">
+        <li>{ic("phone", "ic-s")}<a href="tel:+923362222081">0336&#8209;2222081</a></li>
+        <li>{ic("phone", "ic-s")}<a href="tel:+923141401155">0314&#8209;1401155</a></li>
+        <li>{wa_icon("ic-s")}<a href="{order_wa}" target="_blank" rel="noopener">Order on WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© <span id="yr">2026</span> Flame Up Haripur</p>
+    <p>Website by DesignSpark</p>
+  </div>
+</footer>
+
+<nav class="quickbar" aria-label="Quick actions">
+  <a href="#deals">{ic("menu")}Menu</a>
+  <a href="{MAPS}" target="_blank" rel="noopener">{ic("pin")}Map</a>
+  <a href="tel:+923362222081">{ic("phone")}Call</a>
+  <button type="button" class="qb-order" data-open-cart>{ic("cart")}Order <b class="count" data-count>0</b><span class="sr-only"> items, open your order</span></button>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cart-h" hidden>
+  <div class="drawer-bg" data-close-cart></div>
+  <div class="sheet">
+    <div class="sheet-head" id="sheetHead">
+      <span class="grab" aria-hidden="true"></span>
+      <div class="sh-title">
+        <h2 id="cart-h">Your order</h2>
+        <p class="sh-sub" id="cartSub">No items yet</p>
+      </div>
+      <button type="button" class="sh-clear" id="clearCart">{ic("trash", "ic-s")}Clear</button>
+      <button type="button" class="sh-x" data-close-cart aria-label="Close your order">{ic("x")}</button>
+    </div>
+
+    <div class="sheet-body">
+      <div class="empty" id="empty">
+        <span class="empty-art" aria-hidden="true">{ic("cart")}</span>
+        <h3>Your order is empty</h3>
+        <p>Tap any deal, burger or pizza to add it here.</p>
+        <a class="btn btn-yellow" href="#deals" data-close-cart>Browse deals {ic("arrow", "ic-s")}</a>
+      </div>
+
+      <ul class="lines" id="lines" aria-label="Items in your order"></ul>
+      <a class="addmore" id="addMore" href="#deals" data-close-cart>{ic("plus", "ic-s")}Add more items</a>
+
+      <form id="orderForm" class="oform" novalidate>
+        <fieldset class="otype">
+          <legend>How do you want it?</legend>
+          <div class="seg">
+            <label><input type="radio" name="otype" value="Delivery" checked><span>{ic("bike")}Delivery</span></label>
+            <label><input type="radio" name="otype" value="Pick-up"><span>{ic("bag")}Pick-up</span></label>
+            <label><input type="radio" name="otype" value="Dine-in"><span>{ic("table")}Dine-in</span></label>
+          </div>
+        </fieldset>
+        <div class="fields">
+          <label class="fld"><span class="fl">Your name</span><span class="inp">{ic("user", "ic-s")}<input type="text" name="name" autocomplete="name" placeholder="e.g. Ali Khan" required></span></label>
+          <label class="fld"><span class="fl">Phone number</span><span class="inp">{ic("phone", "ic-s")}<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="03XX XXXXXXX" required></span></label>
+          <label class="fld" id="addrWrap"><span class="fl">Delivery address</span><span class="inp">{ic("pin", "ic-s")}<textarea name="address" rows="2" autocomplete="street-address" placeholder="House, street, area" required></textarea></span></label>
+          <label class="fld"><span class="fl">Note <i>(optional)</i></span><span class="inp">{ic("note", "ic-s")}<input type="text" name="note" placeholder="Extra sauce, no onions…"></span></label>
+        </div>
+      </form>
+    </div>
+
+    <div class="sheet-foot" id="sheetFoot">
+      <div class="sum">
+        <div><span>Subtotal</span><b id="subtotal">Rs 0</b></div>
+        <div class="sum-note" id="sumNote"><span>Delivery charges</span><span>Confirmed on WhatsApp</span></div>
+      </div>
+      <p class="formmsg" id="formmsg" role="status"></p>
+      <button class="send" type="submit" form="orderForm">{wa_icon()}<span>Send order on WhatsApp</span><b id="total">Rs 0</b></button>
+      <p class="sh-fine">WhatsApp opens with your order typed out. Just press send.</p>
+    </div>
+  </div>
+</div>'''
+
+
 def splice(doc, start, end, content):
     a = doc.index(start) + len(start)
     b = doc.index(end)
@@ -291,5 +430,6 @@ if __name__ == "__main__":
     doc = splice(doc, "<!-- ICONS START -->", "<!-- ICONS END -->", sprite())
     body = "\n".join(l for l in (x.rstrip() for x in build().split("\n")) if l)
     doc = splice(doc, "<!-- SECTIONS START -->", "<!-- SECTIONS END -->", body)
+    doc = splice(doc, "<!-- CHROME START -->", "<!-- CHROME END -->", chrome())
     PAGE.write_text(doc, encoding="utf-8")
     print("sections written")

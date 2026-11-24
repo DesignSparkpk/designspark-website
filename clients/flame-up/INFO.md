@@ -40,9 +40,10 @@ TikTok also shows a **rooftop** used for birthdays, anniversaries and events.
 
 ## Website (site/)
 Single page, Flame Up green + yellow, bold street-food style. Hero: their TikTok video (desktop: 3-video wall), logo cut out with Adobe. Deals with tabs, sized pizzas, WhatsApp cart (order type, address, totals), rooftop events, visit info.
-Checks: Lighthouse mobile 98/100/100/100, desktop 100×4; axe 0; HTML 0 errors; no responsive issues 320–1920 px.
+Order screen: bottom sheet on phones (drag down to close), side panel on desktop. Each line has a photo or deal-colour thumbnail, unit price, line total and a − / + stepper (bin icon at 1). Order type is a segmented control; name, phone and address are checked before WhatsApp opens; the order survives a page reload, and the customer's details are remembered for next time.
+Checks (24 Nov 2026): Lighthouse mobile 96–97 / 100 / 100 / 100, desktop 100×4; axe 0; HTML 0 errors; no responsive issues 320–1920 px; 33 automated order tests pass.
 
-**Media:** hero montage and photos now come only from Flame Up's own TikTok videos (stuff crust pizza, cheese pull, Blazing Combo, wings, beef burger, pizza stacker, grilled bite pizza, rooftop). The earlier clip with a food creator's watermark ("Explorewithjawad") is no longer used. Stills were auto-toned with Adobe. Ask the owner for original full-quality clips before going live.
+**Media:** hero montage and photos now come only from Flame Up's own TikTok videos (stuff crust pizza, cheese pull, Blazing Combo, wings, beef burger, pizza stacker, grilled bite pizza, rooftop). The earlier clip with a food creator's watermark ("Explorewithjawad") is no longer used. Stills were auto-toned with Adobe. The hero montage is cropped so the small Flame Up logo burned into their TikTok clips does not sit under the menu, its blurry first frames are trimmed, and a weak shot (bun on foil) was swapped for the wings-and-burger platter. The "Warm lights" tile is a new, sharper frame, auto-toned with Adobe. Ask the owner for original full-quality clips before going live.
 
 TikTok reach (24 Nov 2026): 147 videos, ~2.03 million total views, ~13.8K average per video, top video 147K views.
 

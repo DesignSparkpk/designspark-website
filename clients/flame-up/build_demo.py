@@ -15,7 +15,7 @@ html = html.replace('<link rel="stylesheet" href="styles.css">', f"<style>\n{css
 html = html.replace('<script src="app.js" defer></script>', f"<script>\n{js}</script>")
 html = re.sub(r'<link rel="preload"[^>]*>\n', "", html)
 html = re.sub(r'<meta property="og:image"[^>]*>\n', "", html)
-html = re.sub(r'(src|poster|href|data-src)="((?:img|media)/[^"]+)"', lambda m: f'{m.group(1)}="{uri(m.group(2))}"', html)
+html = re.sub(r'(src|poster|href|data-src|data-poster|data-thumb)="((?:img|media)/[^"]+)"', lambda m: f'{m.group(1)}="{uri(m.group(2))}"', html)
 assert not re.findall(r'"(?:img|media|fonts)/', html)
 out = ROOT / "flameup-demo.html"; out.write_text(html, encoding="utf-8")
 print(out, f"{len(html)//1024} KB")
