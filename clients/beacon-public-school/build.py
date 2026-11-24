@@ -30,6 +30,7 @@ NAV = [
 ]
 
 ICONS = {
+    "menu": '<path d="M4 7h16M4 12h16M4 17h16"/>',
     "phone": '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
     "chat": '<path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/>',
     "facebook": '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
@@ -57,8 +58,10 @@ ICONS = {
     "lock": '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
 }
 
+DUO = {'apply': '<circle cx="16.5" cy="16.5" r="5" fill="#fbbd13" stroke="none"/>', 'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#fbbd13" stroke="none" opacity=".45"/>', 'book': '<path d="M6.5 2H20v15H6.5A2.5 2.5 0 0 0 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="#fbbd13" stroke="none" opacity=".45"/>', 'pin': '<circle cx="12" cy="10" r="3.2" fill="#fbbd13" stroke="none"/>', 'steps': '<circle cx="6" cy="8" r="4" fill="#fbbd13" stroke="none" opacity=".6"/><circle cx="6" cy="18" r="4" fill="#fbbd13" stroke="none" opacity=".6"/>', 'fees': '<circle cx="12" cy="12" r="3.5" fill="#fbbd13" stroke="none"/>', 'megaphone': '<path d="m3 11 18-5v12L3 14v-3z" fill="#fbbd13" stroke="none" opacity=".5"/>', 'phone': '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" fill="#fbbd13" stroke="none" opacity=".4"/>', 'school': '<path d="M5 21V10l7-5 7 5v11z" fill="#fbbd13" stroke="none" opacity=".4"/>', 'blocks': '<circle cx="17.5" cy="17.5" r="3.5" fill="#fbbd13" stroke="none"/>', 'cap': '<path d="M22 10 12 5 2 10l10 5 10-5z" fill="#fbbd13" stroke="none" opacity=".5"/>', 'star': '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="#fbbd13" stroke="none" opacity=".55"/>', 'trophy': '<path d="M18 2H6v7a6 6 0 0 0 12 0V2z" fill="#fbbd13" stroke="none" opacity=".55"/>', 'help': '<circle cx="12" cy="12" r="10" fill="#fbbd13" stroke="none" opacity=".35"/>', 'file': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="#fbbd13" stroke="none" opacity=".35"/>', 'flask': '<path d="M6.5 15h11l2.5 3a2 2 0 0 1-1.8 3H5.8A2 2 0 0 1 4 18z" fill="#fbbd13" stroke="none" opacity=".6"/>', 'pencil': '<path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z" fill="#fbbd13" stroke="none" opacity=".45"/>', 'monitor': '<rect x="2" y="3" width="20" height="14" rx="2" fill="#fbbd13" stroke="none" opacity=".35"/>', 'users': '<circle cx="9" cy="7" r="4" fill="#fbbd13" stroke="none" opacity=".55"/>', 'library': '<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z" fill="#fbbd13" stroke="none" opacity=".45"/>', 'bus': '<rect x="4" y="3" width="16" height="8" rx="2" fill="#fbbd13" stroke="none" opacity=".45"/>'}
+
 SPRITE = '<svg class="sprite" aria-hidden="true">' + "".join(
-    f'<symbol id="i-{k}" viewBox="0 0 24 24">{v}</symbol>' for k, v in ICONS.items()
+    f'<symbol id="i-{k}" viewBox="0 0 24 24">{DUO.get(k, "")}{v}</symbol>' for k, v in ICONS.items()
 ) + "</svg>"
 
 
@@ -104,9 +107,10 @@ HEAD = """<!DOCTYPE html>
   <div class="container">
     <a class="brand" href="index.html">
       <img src="img/logo-96.webp" width="48" height="48" alt="">
-      <span><b data-ur="بیکن پبلک اسکول اینڈ کالج">Beacon Public School &amp; College</b><small data-ur="ہری پور، خیبر پختونخوا">Haripur, Khyber Pakhtunkhwa</small></span>
+      <span class="long"><b data-ur="بیکن پبلک اسکول اینڈ کالج">Beacon Public School &amp; College</b><small data-ur="ہری پور، خیبر پختونخوا">Haripur, Khyber Pakhtunkhwa</small></span>
+      <span class="short"><span data-ur="بیکن پبلک اسکول">Beacon Public School</span><span data-ur="اینڈ کالج، ہری پور">&amp; College, Haripur</span></span>
     </a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" data-ur="مینو">Menu</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">{i_menu}</button>
     <nav class="main" id="mainNav" aria-label="Main">
       <ul>
 {nav}
@@ -192,6 +196,8 @@ def nav_html(active, indent="        "):
     for key, href, en, ur in NAV:
         cur = ' aria-current="page"' if key == active else ""
         out.append(f'{indent}<li><a href="{href}"{cur} data-ur="{ur}">{en}</a></li>')
+    if active is not None:
+        out.append(f'{indent}<li class="nav-apply"><a class="btn btn-gold" href="admissions.html#apply" data-ur="ابھی داخلہ لیں">Apply now</a></li>')
     return "\n".join(out)
 
 
@@ -218,8 +224,8 @@ def build():
         meta = json.loads(header)
         html = HEAD.format(
             title=meta["title"], desc=meta["desc"], phone=PHONE, wa=WA,
-            nav=nav_html(meta.get("nav")), extra_head=meta.get("head", ""), sprite=SPRITE,
-            i_phone=icon("phone"), i_chat=icon("chat"), i_facebook=icon("facebook"),
+            nav=nav_html(meta.get("nav") or ""), extra_head=meta.get("head", ""), sprite=SPRITE,
+            i_phone=icon("phone"), i_chat=icon("chat"), i_facebook=icon("facebook"), i_menu=icon("menu"),
         )
         html += render(body).rstrip() + "\n"
         if meta.get("cta", True):

@@ -41,9 +41,10 @@ nav.main ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
 nav.main a{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--navy);font-weight:600;font-size:.95rem}
 nav.main a:hover{background:var(--soft)}
 nav.main a[aria-current="page"]{background:var(--navy);color:#fff}
-.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:12px;padding:8px 14px;font:inherit;font-weight:600;color:var(--navy);cursor:pointer}
+.menu-btn{display:none;width:46px;height:46px;background:#fff;border:1px solid var(--line);border-radius:50%;color:var(--navy);cursor:pointer;place-items:center;padding:0}
+.menu-btn .ic{width:22px;height:22px}
 @media (max-width:1020px){
-.menu-btn{display:block}
+.menu-btn{display:grid}
 nav.main{position:absolute;inset:76px 0 auto 0;background:#fff;border-bottom:1px solid var(--line);display:none;box-shadow:var(--shadow)}
 nav.main.open{display:block}
 nav.main ul{flex-direction:column;padding:10px 20px 18px}
@@ -244,3 +245,50 @@ background:radial-gradient(#ffffff12 1.2px,transparent 1.4px) 0 0/22px 22px,line
 html[lang=ur] .crest-panel{letter-spacing:0}
 .cards.stack{grid-template-columns:1fr;align-content:start}
 .ltr,a[href^="tel:"]{font-family:var(--font);white-space:nowrap}
+.brand .short{display:none}
+@media (max-width:600px){
+body{font-size:.95rem}
+header.site .container{min-height:68px;gap:12px}
+.brand img{width:40px}
+.brand .long{display:none}
+.brand .short{display:block;color:var(--navy);font-weight:800;font-size:.98rem;line-height:1.2}
+.brand .short span{display:block}
+.brand .short span+span{font-weight:600;font-size:.82rem;color:var(--navy-2)}
+.quick{margin-top:24px}
+nav.main{inset:68px 0 auto 0}
+.section{padding:60px 0}
+.band{padding:60px 0}
+.page-hero{padding:40px 0 44px}
+h2.title{font-size:1.75rem}
+.intro{font-size:.98rem;margin:14px 0 28px}
+.hero{padding:32px 0 110px}
+.hero h1{font-size:2.15rem;margin:16px 0 12px}
+.hero .lead{font-size:1rem;margin-bottom:24px}
+.crest{display:none}
+.cta-row{flex-direction:column;align-items:stretch}
+.cta-row .btn{width:100%}
+.stats{margin-top:-74px}
+.stat{padding:16px}
+.stat b{font-size:1.6rem}
+.stat span{font-size:.82rem;line-height:1.4;display:block}
+.quick{gap:12px;margin-top:40px}
+.quick a{padding:18px 10px;gap:4px}
+.quick .ico{width:56px;height:56px;margin-bottom:6px}
+.quick b{font-size:.9rem;line-height:1.3}
+.quick span{font-size:.78rem;line-height:1.35}
+.cards.compact{grid-template-columns:1fr 1fr;gap:12px}
+.cards.compact .card{padding:16px}
+.cards.compact .card p,.cards.compact .card .more{display:none}
+.cards.compact .card .ico{width:38px;height:38px;margin-bottom:8px}
+.cards.compact .card h3{font-size:.98rem}
+.cards.compact .card .label{font-size:.68rem}
+.features{gap:12px;margin:22px 0 26px}
+.band img{max-width:300px}
+.poster-card{max-width:340px;margin-inline:auto}
+.campus{padding:20px}
+.faq summary{font-size:.98rem;padding:16px 0}
+footer{padding:48px 0 24px}
+.fab{width:50px;height:50px;bottom:14px;inset-inline-end:14px}
+}
+.nav-apply{display:none}
+@media (max-width:1020px){.nav-apply{display:block;margin-top:8px}.nav-apply a.btn{display:flex;color:var(--navy)}}
