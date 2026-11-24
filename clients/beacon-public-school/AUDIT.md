@@ -1,5 +1,30 @@
 # Beacon website: professional audit and competitor comparison
 
+## Update: multi-page site (24 Nov 2026)
+The site is now a 7-page website like PPSC: Home, About, Academics, Admissions, Results, Contact, Privacy. Content comes only from verified sources (see RESEARCH.md); unknown items are clearly marked "Sample" or "To be provided by the school".
+
+| Page | Lighthouse mobile (Perf / A11y / Best / SEO) | Page weight |
+|---|---|---|
+| Home | 100 / 100 / 100 / 100 | 133 KB |
+| About | 100 / 100 / 100 / 100 | 102 KB |
+| Academics | 100 / 100 / 100 / 100 | 102 KB |
+| Admissions | 100 / 100 / 100 / 100 | 61 KB |
+| Results | 100 / 100 / 100 / 100 | 52 KB |
+| Contact | 100 / 100 / 100 / 100 | 54 KB |
+| Privacy | 100 / 100 / 100 / 100 | 61 KB |
+
+- html-validate: 0 errors on all 7 pages
+- axe (WCAG 2.1 AA + best practices): 0 violations on all 7 pages, English and Urdu, desktop and mobile
+- No horizontal scroll, no broken links, anchors or images, no JavaScript errors
+- Admission form and contact form both tested: block empty submit, send a complete WhatsApp message
+- Phone numbers and amounts stay left-to-right inside Urdu text
+
+How to edit: change files in src/ and run `python3 build.py` (add `--demo` to also make the one-file preview beacon-demo.html).
+
+---
+
+## Earlier single-page audit
+
 Audited 24 Nov 2026. Tools: Google Lighthouse 12 (mobile + desktop), axe-core (WCAG 2.1 AA + best practices, English and Urdu), html-validate, Playwright functional tests on desktop (1366px) and mobile (390px).
 
 ## Scores
