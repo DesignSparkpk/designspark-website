@@ -7,7 +7,9 @@ clients/
 ├── food-palace/                     # Food Palace, Haripur (restaurant)
 │   ├── INFO.md                      # research and contact details
 │   └── site/                        # their website (created when work starts)
-└── haripur-international-hospital/  # Haripur International Hospital
+├── haripur-international-hospital/  # Haripur International Hospital (already has a website: low priority)
+│   └── INFO.md
+└── beacon-public-school/            # Beacon Public School & College, Haripur
     ├── INFO.md
     └── site/
 ```
