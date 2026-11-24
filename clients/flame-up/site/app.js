@@ -1,28 +1,25 @@
 (() => {
   const WA = '923362222081';
   const fmt = n => 'Rs ' + n.toLocaleString('en-PK');
-  const cart = new Map();
+  const cart = new Map(); // id -> {name, price, qty}
   const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
 
-  // header becomes solid after the hero
+  // header turns solid after the hero
   const header = $('header.site');
   const onScroll = () => header.classList.toggle('solid', scrollY > 40);
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // desktop video wall: only load the side videos on wide screens
+  // background videos: side videos only on wide screens, none with reduced motion
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (matchMedia('(min-width: 901px)').matches && !reduce) {
-    document.querySelectorAll('video[data-src]').forEach(v => { v.src = v.dataset.src; v.play().catch(() => {}); });
+    $$('video[data-src]').forEach(v => { v.src = v.dataset.src; v.play().catch(() => {}); });
   }
-
-  // respect reduced motion for background videos
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
-  }
+  if (reduce) $$('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
 
   // deal tabs
-  const tabs = [...document.querySelectorAll('[role=tab]')];
+  const tabs = $$('[role=tab]');
   function selectTab(t) {
     tabs.forEach(x => {
       const on = x === t;
@@ -41,51 +38,94 @@
     });
   });
 
-  // cart
+  // ---------- cart ----------
   const toast = $('#toast');
   let toastTimer;
   function say(msg) {
     toast.textContent = msg; toast.classList.add('show');
-    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
-  }
-  function add(id, name, price) {
-    const line = cart.get(id) || { name, price, qty: 0 };
-    line.qty++; cart.set(id, line); render();
-    say(`${name} added · ${count()} in order`);
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1500);
   }
   const count = () => [...cart.values()].reduce((s, l) => s + l.qty, 0);
   const total = () => [...cart.values()].reduce((s, l) => s + l.qty * l.price, 0);
 
+  function change(id, name, price, d) {
+    const line = cart.get(id) || { name, price, qty: 0 };
+    line.qty = Math.max(0, line.qty + d);
+    if (line.qty) cart.set(id, line); else cart.delete(id);
+    render();
+    if (d > 0) say(`${name} added · ${count()} in order`);
+  }
+
+  // what each stepper/tap points at
+  function itemFor(el) {
+    const host = el.closest('[data-item]');
+    if (host) return { id: host.dataset.item, name: host.dataset.name, price: +host.dataset.price };
+    const pz = el.closest('[data-pizza]');
+    if (pz) {
+      const [size, price] = pz.querySelector('input[type=radio]:checked').value.split('|');
+      return { id: `${pz.dataset.pizza}-${size}`, name: `${pz.dataset.name} (${size})`, price: +price };
+    }
+    return null;
+  }
+
+  document.addEventListener('click', e => {
+    const tap = e.target.closest('.tap');
+    const act = e.target.closest('[data-act]');
+    if (!tap && !(act && act.closest('.stepper'))) return;
+    const it = itemFor(tap || act);
+    if (!it) return;
+    change(it.id, it.name, it.price, act && act.dataset.act === 'dec' ? -1 : 1);
+  });
+
+  // pizzas: size change updates price and stepper target
+  $$('[data-pizza]').forEach(pz => pz.addEventListener('change', () => {
+    const it = itemFor(pz.querySelector('.stepper'));
+    pz.querySelector('[data-pz-price]').textContent = fmt(it.price);
+    const st = pz.querySelector('.stepper');
+    st.dataset.stepper = it.id;
+    st.querySelector('.st-add').setAttribute('aria-label', `Add ${it.name} to order`);
+    const [dec, inc] = st.querySelectorAll('.st-qty button');
+    dec.setAttribute('aria-label', `Remove one ${it.name}`);
+    inc.setAttribute('aria-label', `Add one more ${it.name}`);
+    render();
+  }));
+
+  function renderSteppers() {
+    $$('.stepper').forEach(st => {
+      const line = cart.get(st.dataset.stepper);
+      const q = line ? line.qty : 0;
+      st.querySelector('.st-add').hidden = q > 0;
+      const box = st.querySelector('.st-qty');
+      box.hidden = q === 0;
+      box.querySelector('output').textContent = q;
+      const card = st.closest('[data-item], [data-pizza]');
+      if (card) card.classList.toggle('in-cart', q > 0);
+    });
+  }
+
   function render() {
-    document.querySelectorAll('[data-count]').forEach(c => c.textContent = count());
+    $$('[data-count]').forEach(c => c.textContent = count());
     const ul = $('#lines'); ul.innerHTML = '';
     for (const [id, l] of cart) {
       const li = document.createElement('li');
       li.innerHTML = `<span class="nm"></span><span class="pr"></span>
-        <span class="qty"><button type="button" aria-label="Remove one">−</button><b></b><button type="button" aria-label="Add one">+</button></span>`;
+        <span class="qty"><button type="button">−</button><b></b><button type="button">+</button></span>`;
       li.querySelector('.nm').textContent = l.name;
       li.querySelector('.pr').textContent = fmt(l.qty * l.price);
       li.querySelector('.qty b').textContent = l.qty;
       const [minus, plus] = li.querySelectorAll('button');
       minus.setAttribute('aria-label', `Remove one ${l.name}`);
       plus.setAttribute('aria-label', `Add one ${l.name}`);
-      minus.onclick = () => { l.qty--; if (!l.qty) cart.delete(id); render(); };
-      plus.onclick = () => { l.qty++; render(); };
+      minus.onclick = () => change(id, l.name, l.price, -1);
+      plus.onclick = () => change(id, l.name, l.price, 1);
       ul.appendChild(li);
     }
     $('#empty').hidden = cart.size > 0;
     $('#total').textContent = fmt(total());
+    renderSteppers();
   }
 
-  document.querySelectorAll('[data-add]').forEach(b =>
-    b.addEventListener('click', () => add(b.dataset.id, b.dataset.name, +b.dataset.price)));
-  document.querySelectorAll('[data-add-size]').forEach(b =>
-    b.addEventListener('click', () => {
-      const [size, price] = document.querySelector(`input[name="${b.dataset.addSize}"]:checked`).value.split('|');
-      add(`${b.dataset.id}-${size}`, `${b.dataset.name} (${size})`, +price);
-    }));
-
-  // drawer
+  // ---------- drawer ----------
   const drawer = $('#cart');
   let lastFocus;
   function openCart() {
@@ -96,8 +136,8 @@
     drawer.hidden = true; document.body.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
-  document.querySelectorAll('[data-open-cart]').forEach(b => b.addEventListener('click', openCart));
-  document.querySelectorAll('[data-close-cart]').forEach(b => b.addEventListener('click', closeCart));
+  $$('[data-open-cart]').forEach(b => b.addEventListener('click', openCart));
+  $$('[data-close-cart]').forEach(b => b.addEventListener('click', closeCart));
   drawer.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeCart();
     if (e.key !== 'Tab') return;
