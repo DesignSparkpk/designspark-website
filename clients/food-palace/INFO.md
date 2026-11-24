@@ -39,7 +39,7 @@ Needed: full menu with prices, deals, categories, sizes. **Get from owner or scr
 
 ## Site plan (concept)
 - Style: Claymorphism (fun, bright, food-friendly), brand colours to match their logo once we have it.
-- Sections: hero with their best-selling items (confirm with owner) + "Order on WhatsApp" → Deals → Full menu by category → Ice Cream Chaat feature → Reviews → Location map + hours → TikTok/Facebook links.
+- Sections: hero with their best-selling items (confirm with owner) + "Order on WhatsApp" → Deals → Full menu by category → Signature item feature (confirm with owner) → Reviews → Location map + hours → TikTok/Facebook links.
 - Ordering: tap item → add to cart → sends a ready-made WhatsApp message to 0300 9837650 (no commission, no backend).
 
 ## Still to collect
