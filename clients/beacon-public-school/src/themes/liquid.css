@@ -1,0 +1,87 @@
+/* ===== Liquid Glass theme (layered on top of styles.css) ===== */
+:root{
+  --cyan:#a5e8ff;
+  --lg-fill:linear-gradient(160deg,rgba(255,255,255,.17),rgba(255,255,255,.05) 42%,rgba(10,24,80,.28));
+  --lg-rim:inset 0 1px 1px rgba(255,255,255,.85),inset 0 -1px 1px rgba(255,255,255,.2);
+  --lg-glow:inset 0 -14px 30px rgba(120,200,255,.16),0 22px 50px -20px rgba(0,10,60,.65);
+  --lg-blur:blur(22px) saturate(180%);
+  --spring:cubic-bezier(.2,.9,.3,1.3);
+}
+
+/* vivid backdrop + glossy orbs */
+body::before{background:
+  radial-gradient(42% 36% at 14% 12%,rgba(11,59,255,.6),transparent 70%),
+  radial-gradient(34% 32% at 90% 34%,rgba(0,194,255,.34),transparent 70%),
+  radial-gradient(44% 40% at 76% 92%,rgba(122,60,255,.42),transparent 70%),
+  radial-gradient(30% 28% at 8% 86%,rgba(251,189,19,.2),transparent 70%),
+  linear-gradient(160deg,#06123f 0%,#0a2378 50%,#170b4d 100%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(circle closest-side at 42% 40%,rgba(255,255,255,.85) 0 7%,rgba(255,221,120,.85) 24%,rgba(251,170,19,.5) 78%,transparent 100%) right 3% top 300px/180px 180px no-repeat,
+  radial-gradient(circle closest-side at 42% 40%,rgba(255,255,255,.8) 0 7%,rgba(140,225,255,.7) 26%,rgba(0,150,255,.42) 78%,transparent 100%) left -40px top 62%/170px 170px no-repeat,
+  radial-gradient(circle closest-side at 42% 40%,rgba(255,255,255,.7) 0 7%,rgba(190,160,255,.6) 26%,rgba(122,60,255,.38) 78%,transparent 100%) right 12% bottom 6%/120px 120px no-repeat;
+  opacity:.75}
+@media (max-width:860px){body::after{opacity:.35}}
+@media (max-width:600px){body::after{display:none}}
+
+/* liquid surfaces */
+.card,.campus,.steps li,.trio article,.glance,.contact-list li,.poster-card,.crest-panel,.form,.stats .grid,.quick a{
+  background:var(--lg-fill);border:1px solid rgba(255,255,255,.28);border-radius:28px;
+  box-shadow:var(--lg-rim),var(--lg-glow);isolation:isolate;
+  transition:transform .45s var(--spring),background .2s,border-color .2s}
+.card::before,.campus::before,.steps li::after,.trio article::before,.contact-list li::before,.poster-card::before,.crest-panel::before,.form::before,.stats .grid::before,.quick a::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;
+  background:linear-gradient(160deg,rgba(255,255,255,.32) 0%,rgba(255,255,255,.07) 26%,transparent 52%)}
+.card:hover,.campus:hover,.quick a:hover{transform:translateY(-3px) scale(1.015)}
+.stats .grid,.form{background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.07) 45%,rgba(10,24,80,.38))}
+@supports (backdrop-filter:blur(1px)){
+  .stats .grid,.form,.poster-card,header.site .container,nav.main.open{-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur)}
+}
+.trio article{border-top:1px solid rgba(255,255,255,.28)}
+.trio article h3{color:var(--gold)}
+.steps li::before{box-shadow:inset 0 1px 1px rgba(255,255,255,.9),0 6px 14px -4px rgba(251,189,19,.7)}
+.card .ico,.campus .ico,.contact-list .ico,.quick .ico{border-radius:50%;background:linear-gradient(160deg,rgba(255,255,255,.28),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 1px rgba(255,255,255,.9)}
+.quick .big .ico{border-radius:50%;background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(255,255,255,.15))}
+.card.accent{background:linear-gradient(160deg,rgba(255,221,120,.38),rgba(251,189,19,.12) 45%,rgba(10,24,80,.2))}
+.quick .big{background:linear-gradient(160deg,#ffe28a 0%,#fbbd13 45%,#e9a300 100%);box-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -18px 34px rgba(160,90,0,.28),0 26px 50px -20px rgba(251,189,19,.6)}
+.quick .wide{background:linear-gradient(160deg,rgba(0,194,255,.45),rgba(11,59,255,.25) 50%,rgba(10,24,80,.3))}
+
+/* floating capsule header */
+header.site{background:transparent;border-bottom:0;padding:10px 0}
+header.site .container{background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(10,30,100,.62) 45%,rgba(8,20,80,.82));border:1px solid rgba(255,255,255,.3);border-radius:999px;box-shadow:var(--lg-rim),0 18px 40px -18px rgba(0,10,60,.7);padding-inline:14px 10px;min-height:68px;max-width:1180px;width:calc(100% - 24px)}
+@supports not (backdrop-filter:blur(1px)){header.site .container{background:rgba(10,30,100,.95)}}
+nav.main a[aria-current="page"]{background:linear-gradient(160deg,#fff,#dbe8ff);color:#0a2378;box-shadow:inset 0 1px 1px #fff,0 6px 14px -6px rgba(0,0,0,.5)}
+.icon-btn,.menu-btn{background:linear-gradient(160deg,rgba(255,255,255,.26),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 1px rgba(255,255,255,.9)}
+.icon-btn.wa{background:linear-gradient(160deg,#5bf29a,#25d366 55%,#1aa853);border-color:transparent;box-shadow:inset 0 1px 1px rgba(255,255,255,.9),0 8px 18px -8px rgba(37,211,102,.8)}
+@media (max-width:1100px){
+  header.site .container{border-radius:26px}
+  nav.main{top:calc(100% - 2px);inset-inline:12px;border-radius:24px;border:1px solid rgba(255,255,255,.3);background:rgba(8,26,92,.92);box-shadow:var(--lg-rim),var(--lg-glow)}
+}
+@media (max-width:600px){
+  header.site{padding:8px 0}
+  header.site .container{min-height:60px;width:calc(100% - 16px);padding-inline:10px 8px;border-radius:22px}
+  nav.main{inset-inline:8px}
+}
+
+/* droplet buttons */
+.btn{transition:transform .45s var(--spring),box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-1px) scale(1.03)}
+.btn-gold{background:linear-gradient(160deg,#ffe28a 0%,#fbbd13 50%,#eaa400 100%);box-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -6px 12px rgba(160,90,0,.25),0 12px 26px -10px rgba(251,189,19,.8)}
+.btn-wa{background:linear-gradient(160deg,#5bf29a,#25d366 55%,#1aa853);box-shadow:inset 0 1px 1px rgba(255,255,255,.9),0 12px 26px -10px rgba(37,211,102,.8)}
+.btn-outline,.btn-ghost{background:linear-gradient(160deg,rgba(255,255,255,.24),rgba(255,255,255,.05));border-color:rgba(255,255,255,.38);box-shadow:inset 0 1px 1px rgba(255,255,255,.85)}
+.btn-navy{background:linear-gradient(160deg,#fff,#dbe8ff);box-shadow:inset 0 1px 1px #fff,0 10px 22px -10px rgba(0,0,0,.6)}
+.toc a,.band .pillars li,.lang{box-shadow:inset 0 1px 1px rgba(255,255,255,.7)}
+.pill{background:linear-gradient(160deg,#ffe28a,#fbbd13 55%,#eaa400);box-shadow:inset 0 1px 1px rgba(255,255,255,.95)}
+
+/* sections + bands */
+.section.soft{background:transparent;border-block:0}
+.band{background:linear-gradient(135deg,rgba(0,194,255,.16),rgba(122,60,255,.18));border-block:1px solid rgba(255,255,255,.14)}
+.band img{border-radius:28px;box-shadow:inset 0 1px 1px #fff,0 30px 60px -20px #000c}
+.notice-strip{background:linear-gradient(180deg,#ffe28a,#fbbd13 60%,#f0ad00);box-shadow:inset 0 -1px 0 rgba(0,0,0,.12)}
+.cta .container{background:linear-gradient(160deg,#ffe28a 0%,#fbbd13 50%,#eaa400 100%);border-radius:36px;box-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -20px 40px rgba(160,90,0,.25),0 30px 60px -30px rgba(251,189,19,.7)}
+footer{background:linear-gradient(180deg,rgba(4,10,40,.35),rgba(4,10,40,.6));border-top:1px solid rgba(255,255,255,.16)}
+.hero h1{text-shadow:0 2px 0 rgba(255,255,255,.08),0 10px 40px rgba(0,20,120,.6)}
+.crest::before{background:radial-gradient(circle,rgba(0,194,255,.35),rgba(251,189,19,.18) 40%,transparent 65%)}
+
+@media (prefers-reduced-motion:reduce){
+  .card:hover,.campus:hover,.quick a:hover,.btn:hover{transform:none}
+}

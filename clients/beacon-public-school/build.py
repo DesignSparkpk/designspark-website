@@ -20,6 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 OUT = ROOT / "site"
+EXTRA_CSS = []  # theme files appended after styles.css (see --theme)
 
 NAV = [
     ("index", "index.html", "Home", "ہوم"),
@@ -214,7 +215,10 @@ def render(text):
 
 
 def build():
-    (OUT / "styles.css").write_text(minify_css((SRC / "styles.css").read_text(encoding="utf-8")), encoding="utf-8")
+    css = (SRC / "styles.css").read_text(encoding="utf-8")
+    for extra in EXTRA_CSS:
+        css += "\n" + extra.read_text(encoding="utf-8")
+    (OUT / "styles.css").write_text(minify_css(css), encoding="utf-8")
     (OUT / "app.js").write_text((SRC / "app.js").read_text(encoding="utf-8"), encoding="utf-8")
     keep = set()
     for page in sorted((SRC / "pages").glob("*.html")):
@@ -322,6 +326,14 @@ def build_demo(out_file):
 
 
 if __name__ == "__main__":
+    theme = sys.argv[sys.argv.index("--theme") + 1] if "--theme" in sys.argv else None
+    if theme:
+        import shutil
+        OUT = ROOT / "variants" / theme / "site"
+        OUT.mkdir(parents=True, exist_ok=True)
+        for folder in ("img", "fonts"):
+            shutil.copytree(ROOT / "site" / folder, OUT / folder, dirs_exist_ok=True)
+        EXTRA_CSS = [SRC / "themes" / f"{theme}.css"]
     build()
     if "--demo" in sys.argv:
-        build_demo(ROOT / "beacon-demo.html")
+        build_demo(ROOT / (f"beacon-demo-{theme}.html" if theme else "beacon-demo.html"))

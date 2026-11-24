@@ -1,2 +1,4 @@
 *.zip
 clients/*/beacon-demo.html
+clients/*/variants/
+clients/*/beacon-demo-*.html
