@@ -1,4 +1,4 @@
-# Flame Up: cold message (WhatsApp 0336-2222081)
+# Flame Up: cold message (send to Flame Up WhatsApp 0336-2222081 from DesignSpark 0325-5944089)
 
 Send between 3 and 5 PM (after lunch rush, before dinner). Attach 2 screenshots: `preview/mobile-hero.png` and `preview/mobile-order.png`.
 
@@ -27,6 +27,6 @@ Sending 2 screenshots. Can I show you the full website in 5 minutes?
 Assalam o Alaikum, bas yaad dihani ke liye: Flame Up ki website ka design tayyar hai. Agar aap dekhna chahein to bata dein, main aa kar ya yahin dikha deta hoon. Shukriya! 🙏
 
 ## If they reply
-- "Kitne ka hai?" → First show the demo (`flameup-demo.html`), then share the proposal PDF with your price.
+- "Kitne ka hai?" → First show the demo (`flameup-demo.html`), then share the proposal PDF and ask: "Aap batayein aap ka budget kya hai, us hisaab se package bana dete hain."
 - "Foodpanda hai na" → "Foodpanda new customers ke liye rakhein. Website aap ke regular customers aur TikTok followers ke liye hai, un orders pe commission nahi katega."
 - "Hum khud bana lenge / page hai" → "Bilkul. Ye design aap ke liye free dekhne ko hai, pasand aaye to baat karte hain."
