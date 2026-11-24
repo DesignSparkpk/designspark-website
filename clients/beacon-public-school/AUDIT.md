@@ -1,5 +1,11 @@
 # Beacon website: professional audit and competitor comparison
 
+## Update 4: Glassmorphism + Bento Grid theme (24 Nov 2026)
+Feedback: white background with text looked plain and boring. Applied two of the repo's saved style skills:
+- **Glassmorphism:** deep navy gradient backdrop with soft Beacon-blue, gold and cyan light; frosted glass cards, header and stats; gold accents and buttons; white form fields for easy typing
+- **Bento Grid:** home quick links as a bento mosaic (large gold Apply tile, wide Pre-cadet tile, smaller tiles)
+- Checked again: 0 HTML errors, 0 axe violations (English and Urdu), no responsive issues at 14 widths, Lighthouse 100 on all six pages
+
 ## Update 3: own header + responsive pass (24 Nov 2026)
 - Replaced the PPSC-like dark contact bar with Beacon's own gold "Admissions open" strip (Apply link + Urdu toggle); call and WhatsApp (real WhatsApp logo) are round buttons inside the header
 - Removed the floating WhatsApp button that covered content on phones

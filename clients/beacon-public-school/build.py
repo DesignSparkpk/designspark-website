@@ -208,7 +208,8 @@ def render(text):
     text = re.sub(r"\{\{i:([a-z]+)\}\}", lambda m: icon(m.group(1)), text)
     # keep the phone number on one line in English text (leave Urdu data-ur values alone)
     parts = re.split(r'(data-ur="[^"]*")', text)
-    parts = [p if p.startswith("data-ur=") else p.replace("0300-5148824", '<span class="ltr">0300&#8209;5148824</span>') for p in parts]
+    parts = [p.replace("0300-5148824", "\u20660300-5148824\u2069") if p.startswith("data-ur=")
+             else p.replace("0300-5148824", '<span class="ltr">0300&#8209;5148824</span>') for p in parts]
     return "".join(parts)
 
 
