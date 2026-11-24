@@ -1,5 +1,28 @@
 # Beacon website: professional audit and competitor comparison
 
+## Update 2: redesign (24 Nov 2026)
+Feedback: the multi-page version looked complicated next to PPSC. Redesigned with one clean design system:
+- One font (Plus Jakarta Sans, self-hosted), one colour family (navy, Beacon blue, gold), one card style, line icons instead of emojis
+- Removed every "Sample" badge, blank table and placeholder box; the "concept" ribbon is gone
+- Unknown details (fees, transport, FSc groups) now point to WhatsApp instead of showing blanks
+- Results page removed until the school provides real results
+- Home follows a clear order: hero with stats, quick links, welcome, programmes, pre-cadet band, campuses, FAQ, CTA
+
+Pages: Home, About, Academics, Admissions, Contact, Privacy.
+
+| Page | Lighthouse mobile (Perf / A11y / Best / SEO) |
+|---|---|
+| Home | 100 / 100 / 100 / 100 |
+| About | 100 / 100 / 100 / 100 |
+| Academics | 100 / 100 / 100 / 100 |
+| Admissions | 100 / 100 / 100 / 100 |
+| Contact | 100 / 100 / 100 / 100 |
+| Privacy | 100 / 100 / 100 / 100 |
+
+html-validate: 0 errors. axe: 0 violations on all pages, English and Urdu, desktop and mobile. Forms, links, images and the one-file demo all tested.
+
+---
+
 ## Update: multi-page site (24 Nov 2026)
 The site is now a 7-page website like PPSC: Home, About, Academics, Admissions, Results, Contact, Privacy. Content comes only from verified sources (see RESEARCH.md); unknown items are clearly marked "Sample" or "To be provided by the school".
 

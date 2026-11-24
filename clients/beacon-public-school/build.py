@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Build the Beacon multi-page site.
+"""Build the Beacon website.
 
 Sources live in src/:
-  base.css, pages.css   -> site/styles.css
+  styles.css            -> site/styles.css
   app.js                -> site/app.js
   pages/<name>.html     -> site/<name>.html   (first line is a JSON header)
 
-Run:  python3 build.py
+In page sources, {{i:name}} becomes an inline line icon (see ICONS).
+
+Run:  python3 build.py            build the site
+      python3 build.py --demo     also make beacon-demo.html (one-file preview)
 """
+import base64
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -21,11 +26,48 @@ NAV = [
     ("about", "about.html", "About", "تعارف"),
     ("academics", "academics.html", "Academics", "تعلیم"),
     ("admissions", "admissions.html", "Admissions", "داخلے"),
-    ("results", "results.html", "Results", "نتائج"),
     ("contact", "contact.html", "Contact", "رابطہ"),
 ]
 
+ICONS = {
+    "phone": '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+    "chat": '<path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/>',
+    "facebook": '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+    "check": '<path d="M20 6 9 17l-5-5"/>',
+    "apply": '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
+    "shield": '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+    "book": '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+    "pin": '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+    "fees": '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>',
+    "steps": '<path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8M13 12h8M13 18h8"/>',
+    "megaphone": '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+    "trophy": '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16"/><path d="M10 14.7V17c0 .6-.5 1-1 1.2C7.9 18.8 7 20.2 7 22M14 14.7V17c0 .6.5 1 1 1.2 1.2.6 2 2 2 3.8"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>',
+    "blocks": '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/>',
+    "pencil": '<path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/>',
+    "flask": '<path d="M9 2v6L4 18a2 2 0 0 0 1.8 3h12.4A2 2 0 0 0 20 18l-5-10V2M8 2h8M7 15h10"/>',
+    "cap": '<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
+    "file": '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>',
+    "star": '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
+    "help": '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',
+    "users": '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+    "bus": '<rect x="4" y="3" width="16" height="15" rx="2"/><path d="M4 11h16M8 18v3M16 18v3M8 14.5h.01M16 14.5h.01"/>',
+    "school": '<path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5"/>',
+    "monitor": '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',
+    "library": '<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',
+    "lock": '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+}
+
+SPRITE = '<svg class="sprite" aria-hidden="true">' + "".join(
+    f'<symbol id="i-{k}" viewBox="0 0 24 24">{v}</symbol>' for k, v in ICONS.items()
+) + "</svg>"
+
+
+def icon(name):
+    return f'<svg class="ic" aria-hidden="true"><use href="#i-{name}"/></svg>'
+
+
 PHONE = "0300&#8209;5148824"
+WA = "https://wa.me/923005148824"
 
 HEAD = """<!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -40,29 +82,28 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:type" content="website">
 <meta property="og:image" content="img/logo-160.png">
 <link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 {extra_head}</head>
 <body>
+{sprite}
 <a class="skip" href="#main" data-ur="مواد پر جائیں">Skip to content</a>
 
-<aside aria-label="Notice and contact bar">
-<div class="demo" role="note" data-ur="ڈیزائن کا نمونہ از DesignSpark۔ جن معلومات پر &quot;نمونہ&quot; لکھا ہے وہ اسکول سے تصدیق ہونا باقی ہیں۔">Concept design by DesignSpark. Items marked "Sample" are waiting for confirmation from the school.</div>
-<div class="topbar">
+<aside class="topbar" aria-label="Contact bar">
   <div class="container">
     <div class="left">
-      <a href="tel:+923005148824">📞&nbsp;{phone}</a>
-      <a href="https://wa.me/923005148824" target="_blank" rel="noopener" data-ur="💬 واٹس ایپ">💬 WhatsApp</a>
-      <a class="hide-sm" href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener">Facebook</a>
+      <a href="tel:+923005148824">{i_phone}<span class="ltr">{phone}</span></a>
+      <a href="{wa}" target="_blank" rel="noopener">{i_chat}<span>WhatsApp</span></a>
+      <a class="hide-sm" href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener">{i_facebook}<span>Facebook</span></a>
     </div>
     <button class="lang" id="langBtn" type="button" lang="ur">اردو</button>
   </div>
-</div>
 </aside>
 
 <header class="site">
   <div class="container">
     <a class="brand" href="index.html">
-      <img class="brand-logo" src="img/logo-96.webp" width="46" height="46" alt="">
+      <img src="img/logo-96.webp" width="48" height="48" alt="">
       <span><b data-ur="بیکن پبلک اسکول اینڈ کالج">Beacon Public School &amp; College</b><small data-ur="ہری پور، خیبر پختونخوا">Haripur, Khyber Pakhtunkhwa</small></span>
     </a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" data-ur="مینو">Menu</button>
@@ -71,7 +112,7 @@ HEAD = """<!DOCTYPE html>
 {nav}
       </ul>
     </nav>
-    <a class="btn btn-gold apply-top" href="admissions.html#apply" data-ur="داخلہ لیں">Apply now</a>
+    <a class="btn btn-gold apply-top" href="admissions.html#apply" data-ur="ابھی داخلہ لیں">Apply now</a>
   </div>
 </header>
 
@@ -79,17 +120,15 @@ HEAD = """<!DOCTYPE html>
 """
 
 CTA = """
-<section class="block" aria-label="Admissions open">
+<section class="cta" aria-label="Admissions open">
   <div class="container">
-    <div class="cta-band">
-      <div>
-        <h2 data-ur="داخلے جاری ہیں: پلے گروپ تا ایف ایس سی">Admissions open: Playgroup to FSc</h2>
-        <p data-ur="محدود نشستیں، جلد اپلائی کریں۔ کسی بھی کیمپس پر تشریف لائیں یا واٹس ایپ کریں۔">Limited seats, apply early. Visit any campus or message us on WhatsApp.</p>
-      </div>
-      <div class="cta-row">
-        <a class="btn btn-gold" href="admissions.html#apply" data-ur="آن لائن داخلہ فارم">Apply online</a>
-        <a class="btn btn-wa" href="https://wa.me/923005148824" target="_blank" rel="noopener" data-ur="واٹس ایپ کریں">WhatsApp us</a>
-      </div>
+    <div>
+      <h2 data-ur="داخلے جاری ہیں: پلے گروپ تا ایف ایس سی">Admissions open: Playgroup to FSc</h2>
+      <p data-ur="محدود نشستیں۔ کسی بھی کیمپس پر تشریف لائیں، کال کریں یا واٹس ایپ کریں۔">Limited seats. Visit any campus, call or message us on WhatsApp.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-navy" href="admissions.html#apply" data-ur="آن لائن اپلائی کریں">Apply online</a>
+      <a class="btn btn-outline" href="{wa}" target="_blank" rel="noopener">WhatsApp <span class="ltr">0300&#8209;5148824</span></a>
     </div>
   </div>
 </section>
@@ -101,9 +140,9 @@ FOOT = """</main>
   <div class="container">
     <div class="cols">
       <div>
-        <img class="foot-logo" src="img/logo-160.webp" width="80" height="80" alt="" loading="lazy">
-        <p class="foot-motto">ASPIRE · ACQUIRE · INSPIRE</p>
-        <p data-ur="جہاں ہر بچہ چمکتا ہے۔ پلے گروپ سے ایف ایس سی تک، ہری پور میں۔">Where every child shines. Playgroup to FSc in Haripur.</p>
+        <img src="img/logo-160.webp" width="80" height="80" alt="" loading="lazy">
+        <p class="motto">ASPIRE · ACQUIRE · INSPIRE</p>
+        <p data-ur="بیکن پبلک اسکول اینڈ کالج، ہری پور۔ پلے گروپ سے ایف ایس سی تک، تین کیمپسز میں۔ جہاں ہر بچہ چمکتا ہے۔">Beacon Public School &amp; College, Haripur. Playgroup to FSc on three campuses. Where every child shines.</p>
       </div>
       <div>
         <h3 data-ur="صفحات">Pages</h3>
@@ -113,26 +152,31 @@ FOOT = """</main>
         </ul>
       </div>
       <div>
-        <h3 data-ur="رابطہ">Contact</h3>
+        <h3 data-ur="کیمپس">Campuses</h3>
         <ul>
-          <li><a href="tel:+923005148824">📞&nbsp;{phone}</a></li>
-          <li><a href="https://wa.me/923005148824" target="_blank" rel="noopener">💬 WhatsApp</a></li>
-          <li><a href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener">Facebook</a></li>
           <li data-ur="مین کیمپس، شکر شاہ روڈ">Main Campus, Shakar Shah Road</li>
           <li data-ur="ٹی آئی پی کیمپس، ہاؤسنگ کالونی روڈ ۱۸">TIP Campus, Housing Colony Road 18</li>
           <li data-ur="مانکرائی کیمپس، بی ایچ یو کے قریب">Mankrai Campus, near BHU</li>
         </ul>
       </div>
+      <div>
+        <h3 data-ur="رابطہ">Contact</h3>
+        <ul>
+          <li><a href="tel:+923005148824">{phone}</a></li>
+          <li><a href="{wa}" target="_blank" rel="noopener" data-ur="واٹس ایپ پر پیغام بھیجیں">Message us on WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener">facebook.com/bpsharipur</a></li>
+        </ul>
+      </div>
     </div>
     <div class="bottom">
       <span>© <span id="yr">2026</span> Beacon Public School &amp; College, Haripur</span>
-      <span data-ur="ڈیزائن: DesignSpark">Website concept by DesignSpark</span>
+      <span data-ur="ویب سائٹ کا ڈیزائن: DesignSpark">Website by DesignSpark</span>
     </div>
   </div>
 </footer>
 
 <aside aria-label="Quick WhatsApp chat">
-<a class="fab" href="https://wa.me/923005148824" target="_blank" rel="noopener" aria-label="Chat with Beacon on WhatsApp">
+<a class="fab" href="{wa}" target="_blank" rel="noopener" aria-label="Chat with Beacon on WhatsApp">
   <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.5 2.4 3.6 5.8 5c2.2.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5s.3-1.3.2-1.5-.3-.2-.6-.4z"/></svg>
 </a>
 </aside>
@@ -157,29 +201,37 @@ def minify_css(css):
     return css.strip() + "\n"
 
 
+def render(text):
+    text = re.sub(r"\{\{i:([a-z]+)\}\}", lambda m: icon(m.group(1)), text)
+    # keep the phone number on one line in English text (leave Urdu data-ur values alone)
+    parts = re.split(r'(data-ur="[^"]*")', text)
+    parts = [p if p.startswith("data-ur=") else p.replace("0300-5148824", '<span class="ltr">0300&#8209;5148824</span>') for p in parts]
+    return "".join(parts)
+
+
 def build():
-    css = (SRC / "base.css").read_text(encoding="utf-8") + "\n" + (SRC / "pages.css").read_text(encoding="utf-8")
-    (OUT / "styles.css").write_text(minify_css(css), encoding="utf-8")
+    (OUT / "styles.css").write_text(minify_css((SRC / "styles.css").read_text(encoding="utf-8")), encoding="utf-8")
     (OUT / "app.js").write_text((SRC / "app.js").read_text(encoding="utf-8"), encoding="utf-8")
-    built = []
+    keep = set()
     for page in sorted((SRC / "pages").glob("*.html")):
-        raw = page.read_text(encoding="utf-8")
-        header, body = raw.split("\n", 1)
+        header, body = page.read_text(encoding="utf-8").split("\n", 1)
         meta = json.loads(header)
         html = HEAD.format(
-            title=meta["title"],
-            desc=meta["desc"],
-            phone=PHONE,
-            nav=nav_html(meta.get("nav")),
-            extra_head=meta.get("head", ""),
+            title=meta["title"], desc=meta["desc"], phone=PHONE, wa=WA,
+            nav=nav_html(meta.get("nav")), extra_head=meta.get("head", ""), sprite=SPRITE,
+            i_phone=icon("phone"), i_chat=icon("chat"), i_facebook=icon("facebook"),
         )
-        html += body.rstrip() + "\n"
+        html += render(body).rstrip() + "\n"
         if meta.get("cta", True):
-            html += CTA
-        html += FOOT.format(phone=PHONE, footnav=nav_html(None, "          "))
+            html += CTA.format(wa=WA)
+        html += FOOT.format(phone=PHONE, wa=WA, footnav=nav_html(None, "          "))
         (OUT / page.name).write_text(html, encoding="utf-8")
-        built.append(page.name)
-    print("built:", ", ".join(built))
+        keep.add(page.name)
+    for old in OUT.glob("*.html"):
+        if old.name not in keep:
+            old.unlink()
+            print("removed old page:", old.name)
+    print("built:", ", ".join(sorted(keep)))
 
 
 ROUTER = """<script>
@@ -217,8 +269,6 @@ def demo_links(html):
 
 def build_demo(out_file):
     """Bundle every built page into one self-contained HTML file for previews."""
-    import base64
-
     def uri(name, mime="image/webp"):
         return f"data:{mime};base64," + base64.b64encode((OUT / "img" / name).read_bytes()).decode()
 
@@ -230,8 +280,7 @@ def build_demo(out_file):
         "img/poster-admissions.webp": uri("poster-admissions.webp"),
         "img/favicon.png": uri("favicon.png", "image/png"),
     }
-    sections = []
-    shell = None
+    sections, shell = [], None
     for page in sorted((SRC / "pages").glob("*.html")):
         key = page.stem
         html = (OUT / page.name).read_text(encoding="utf-8")
@@ -243,7 +292,7 @@ def build_demo(out_file):
             shell = (html[:start], html[end:])
         body = re.sub(r'id="([\w-]+)"', lambda m: m.group(0) if m.group(1) in KEEP_IDS else f'id="{key}--{m.group(1)}"', body)
         body = re.sub(r'aria-labelledby="([\w-]+)"', rf'aria-labelledby="{key}--\1"', body)
-        body = re.sub(r'href="#([\w-]+)"', rf'href="#{key}--\1"', body)
+        body = re.sub(r'href="#(?!i-)([\w-]+)"', rf'href="#{key}--\1"', body)
         body = demo_links(body)
         sections.append(f'<div class="page" data-page="{key}" data-title="{title}">\n{body}</div>\n')
     head, tail = shell
@@ -252,6 +301,9 @@ def build_demo(out_file):
     css = (OUT / "styles.css").read_text(encoding="utf-8")
     head = head.replace('<link rel="stylesheet" href="styles.css">', f"<style>\n{css}</style>")
     head = head.replace('<meta property="og:image" content="img/logo-160.png">\n', "")
+    head = re.sub(r'<link rel="preload"[^>]*>\n', "", head)
+    font = "data:font/woff2;base64," + base64.b64encode((OUT / "fonts" / "plus-jakarta-sans-latin.woff2").read_bytes()).decode()
+    head = head.replace("url(fonts/plus-jakarta-sans-latin.woff2)", f"url({font})")
     head = re.sub(r'<script type="application/ld\+json">.*?</script>\n', "", head, flags=re.S)
     js = (OUT / "app.js").read_text(encoding="utf-8")
     tail = tail.replace('<script src="app.js" defer></script>', f"<script>\n{js}</script>\n{ROUTER}")
@@ -266,7 +318,6 @@ def build_demo(out_file):
 
 
 if __name__ == "__main__":
-    import sys
     build()
     if "--demo" in sys.argv:
         build_demo(ROOT / "beacon-demo.html")

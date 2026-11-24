@@ -11,29 +11,28 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="img/logo-160.png">
 <link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<svg class="sprite" aria-hidden="true"><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></symbol><symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-apply" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-fees" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></symbol><symbol id="i-steps" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8M13 12h8M13 18h8"/></symbol><symbol id="i-megaphone" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16"/><path d="M10 14.7V17c0 .6-.5 1-1 1.2C7.9 18.8 7 20.2 7 22M14 14.7V17c0 .6.5 1 1 1.2 1.2.6 2 2 2 3.8"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></symbol><symbol id="i-blocks" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></symbol><symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 2v6L4 18a2 2 0 0 0 1.8 3h12.4A2 2 0 0 0 20 18l-5-10V2M8 2h8M7 15h10"/></symbol><symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol><symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol><symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="2"/><path d="M4 11h16M8 18v3M16 18v3M8 14.5h.01M16 14.5h.01"/></symbol><symbol id="i-school" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5"/></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol><symbol id="i-library" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol></svg>
 <a class="skip" href="#main" data-ur="مواد پر جائیں">Skip to content</a>
 
-<aside aria-label="Notice and contact bar">
-<div class="demo" role="note" data-ur="ڈیزائن کا نمونہ از DesignSpark۔ جن معلومات پر &quot;نمونہ&quot; لکھا ہے وہ اسکول سے تصدیق ہونا باقی ہیں۔">Concept design by DesignSpark. Items marked "Sample" are waiting for confirmation from the school.</div>
-<div class="topbar">
+<aside class="topbar" aria-label="Contact bar">
   <div class="container">
     <div class="left">
-      <a href="tel:+923005148824">📞&nbsp;0300&#8209;5148824</a>
-      <a href="https://wa.me/923005148824" target="_blank" rel="noopener" data-ur="💬 واٹس ایپ">💬 WhatsApp</a>
-      <a class="hide-sm" href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener">Facebook</a>
+      <a href="tel:+923005148824"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="ltr">0300&#8209;5148824</span></a>
+      <a href="https://wa.me/923005148824" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp</span></a>
+      <a class="hide-sm" href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-facebook"/></svg><span>Facebook</span></a>
     </div>
     <button class="lang" id="langBtn" type="button" lang="ur">اردو</button>
   </div>
-</div>
 </aside>
 
 <header class="site">
   <div class="container">
     <a class="brand" href="index.html">
-      <img class="brand-logo" src="img/logo-96.webp" width="46" height="46" alt="">
+      <img src="img/logo-96.webp" width="48" height="48" alt="">
       <span><b data-ur="بیکن پبلک اسکول اینڈ کالج">Beacon Public School &amp; College</b><small data-ur="ہری پور، خیبر پختونخوا">Haripur, Khyber Pakhtunkhwa</small></span>
     </a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" data-ur="مینو">Menu</button>
@@ -43,11 +42,10 @@
         <li><a href="about.html" data-ur="تعارف">About</a></li>
         <li><a href="academics.html" data-ur="تعلیم">Academics</a></li>
         <li><a href="admissions.html" data-ur="داخلے">Admissions</a></li>
-        <li><a href="results.html" data-ur="نتائج">Results</a></li>
         <li><a href="contact.html" data-ur="رابطہ">Contact</a></li>
       </ul>
     </nav>
-    <a class="btn btn-gold apply-top" href="admissions.html#apply" data-ur="داخلہ لیں">Apply now</a>
+    <a class="btn btn-gold apply-top" href="admissions.html#apply" data-ur="ابھی داخلہ لیں">Apply now</a>
   </div>
 </header>
 
@@ -60,18 +58,13 @@
   </div>
 </section>
 
-<section class="block" aria-label="Privacy details">
+<section class="section" aria-labelledby="pv-h">
   <div class="container prose">
-    <h2 data-ur="ہم کون سی معلومات لیتے ہیں">What information we collect</h2>
-    <p data-ur="داخلہ اور رابطہ فارم میں آپ جو نام، فون نمبر اور پیغام لکھتے ہیں، وہ کسی سرور پر محفوظ نہیں ہوتا۔ بٹن دبانے پر یہ معلومات آپ کے اپنے واٹس ایپ میں ایک پیغام کی صورت میں کھلتی ہیں۔">The name, phone number and message you type in the admission and contact forms are not saved on any server. When you press the button, they open as a message in your own WhatsApp.</p>
-    <h2 data-ur="ہم معلومات کیسے استعمال کرتے ہیں">How we use it</h2>
+    <h2 class="title" id="pv-h" data-ur="آپ کی معلومات">Your information</h2>
+    <p class="mt-24" data-ur="داخلہ اور رابطہ فارم میں آپ جو نام، فون نمبر اور پیغام لکھتے ہیں، وہ کسی سرور پر محفوظ نہیں ہوتا۔ بٹن دبانے پر یہ معلومات آپ کے اپنے واٹس ایپ میں ایک پیغام کی صورت میں کھلتی ہیں۔">The name, phone number and message you type in the admission and contact forms are not saved on any server. When you press the button, they open as a message in your own WhatsApp.</p>
     <p data-ur="واٹس ایپ پر موصول ہونے والی معلومات صرف داخلے اور آپ کے سوال کے جواب کے لیے استعمال ہوتی ہیں۔ ہم اسے کسی تیسرے فریق کو فروخت یا شیئر نہیں کرتے۔">Information received on WhatsApp is used only to handle admissions and answer your question. We do not sell or share it with third parties.</p>
-    <h2 data-ur="زبان کی ترجیح">Language preference</h2>
-    <p data-ur="اگر آپ اردو منتخب کرتے ہیں تو یہ انتخاب صرف آپ کے براؤزر میں محفوظ ہوتا ہے تاکہ اگلی بار بھی اردو کھلے۔">If you choose Urdu, that choice is saved only in your browser so the site opens in Urdu next time.</p>
-    <h2 data-ur="بیرونی ویب سائٹس">Other websites</h2>
-    <p data-ur="اس ویب سائٹ پر واٹس ایپ، فیس بک، گوگل میپس اور بی آئی ایس ای ایبٹ آباد کے لنکس ہیں۔ ان کی اپنی پرائیویسی پالیسیاں ہیں۔">This website links to WhatsApp, Facebook, Google Maps and BISE Abbottabad, which have their own privacy policies.</p>
-    <h2 data-ur="رابطہ">Contact</h2>
-    <p data-ur="پرائیویسی سے متعلق کسی سوال کے لیے 0300-5148824 پر رابطہ کریں۔">For any privacy question, contact 0300-5148824.</p>
+    <p data-ur="اگر آپ اردو منتخب کرتے ہیں تو یہ انتخاب صرف آپ کے براؤزر میں محفوظ ہوتا ہے۔">If you choose Urdu, that choice is saved only in your browser.</p>
+    <p data-ur="اس ویب سائٹ پر واٹس ایپ، فیس بک اور گوگل میپس کے لنکس ہیں، جن کی اپنی پرائیویسی پالیسیاں ہیں۔ کسی سوال کے لیے 0300-5148824 پر رابطہ کریں۔">This website links to WhatsApp, Facebook and Google Maps, which have their own privacy policies. For any question, contact <span class="ltr">0300&#8209;5148824</span>.</p>
   </div>
 </section>
 </main>
@@ -80,9 +73,9 @@
   <div class="container">
     <div class="cols">
       <div>
-        <img class="foot-logo" src="img/logo-160.webp" width="80" height="80" alt="" loading="lazy">
-        <p class="foot-motto">ASPIRE · ACQUIRE · INSPIRE</p>
-        <p data-ur="جہاں ہر بچہ چمکتا ہے۔ پلے گروپ سے ایف ایس سی تک، ہری پور میں۔">Where every child shines. Playgroup to FSc in Haripur.</p>
+        <img src="img/logo-160.webp" width="80" height="80" alt="" loading="lazy">
+        <p class="motto">ASPIRE · ACQUIRE · INSPIRE</p>
+        <p data-ur="بیکن پبلک اسکول اینڈ کالج، ہری پور۔ پلے گروپ سے ایف ایس سی تک، تین کیمپسز میں۔ جہاں ہر بچہ چمکتا ہے۔">Beacon Public School &amp; College, Haripur. Playgroup to FSc on three campuses. Where every child shines.</p>
       </div>
       <div>
         <h3 data-ur="صفحات">Pages</h3>
@@ -91,26 +84,30 @@
           <li><a href="about.html" data-ur="تعارف">About</a></li>
           <li><a href="academics.html" data-ur="تعلیم">Academics</a></li>
           <li><a href="admissions.html" data-ur="داخلے">Admissions</a></li>
-          <li><a href="results.html" data-ur="نتائج">Results</a></li>
           <li><a href="contact.html" data-ur="رابطہ">Contact</a></li>
           <li><a href="privacy.html" data-ur="پرائیویسی پالیسی">Privacy policy</a></li>
         </ul>
       </div>
       <div>
-        <h3 data-ur="رابطہ">Contact</h3>
+        <h3 data-ur="کیمپس">Campuses</h3>
         <ul>
-          <li><a href="tel:+923005148824">📞&nbsp;0300&#8209;5148824</a></li>
-          <li><a href="https://wa.me/923005148824" target="_blank" rel="noopener">💬 WhatsApp</a></li>
-          <li><a href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener">Facebook</a></li>
           <li data-ur="مین کیمپس، شکر شاہ روڈ">Main Campus, Shakar Shah Road</li>
           <li data-ur="ٹی آئی پی کیمپس، ہاؤسنگ کالونی روڈ ۱۸">TIP Campus, Housing Colony Road 18</li>
           <li data-ur="مانکرائی کیمپس، بی ایچ یو کے قریب">Mankrai Campus, near BHU</li>
         </ul>
       </div>
+      <div>
+        <h3 data-ur="رابطہ">Contact</h3>
+        <ul>
+          <li><a href="tel:+923005148824">0300&#8209;5148824</a></li>
+          <li><a href="https://wa.me/923005148824" target="_blank" rel="noopener" data-ur="واٹس ایپ پر پیغام بھیجیں">Message us on WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener">facebook.com/bpsharipur</a></li>
+        </ul>
+      </div>
     </div>
     <div class="bottom">
       <span>© <span id="yr">2026</span> Beacon Public School &amp; College, Haripur</span>
-      <span data-ur="ڈیزائن: DesignSpark">Website concept by DesignSpark</span>
+      <span data-ur="ویب سائٹ کا ڈیزائن: DesignSpark">Website by DesignSpark</span>
     </div>
   </div>
 </footer>
