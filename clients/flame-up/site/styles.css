@@ -262,3 +262,15 @@ nav.main a:hover{background:#ffffff1f}
   .bento .tile:not(.tile-big){grid-template-columns:1fr}
   .bento .tile:not(.tile-big) img{aspect-ratio:16/10;height:auto}
 }
+
+/* ---------- kitchen favourites ---------- */
+.kitchen{background:var(--g8)}
+.kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.kcard{background:var(--g9);border:3px solid var(--y);border-radius:var(--r);overflow:hidden;box-shadow:6px 6px 0 var(--y);display:flex;flex-direction:column;color:#fff}
+.kcard img{width:100%;aspect-ratio:6/5;object-fit:cover}
+.kbody{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.kbody h3{font-family:var(--display);font-weight:400;font-size:1.9rem;text-transform:uppercase;line-height:1;margin:6px 0 0;color:var(--y)}
+.kbody p{margin:0 0 10px;color:#dbe7d9}
+.ask{margin-top:auto;align-self:flex-start;color:var(--y);font-weight:800;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:900px){.kgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.kgrid{grid-template-columns:1fr}.kcard img{aspect-ratio:16/10}}

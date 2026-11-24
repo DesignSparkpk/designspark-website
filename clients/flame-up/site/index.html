@@ -15,7 +15,7 @@
 <link rel="preload" href="img/hero-poster.webp" as="image">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Restaurant","name":"Flame Up","slogan":"Grill is old, we like it flamed","servesCuisine":["Pizza","Burgers","Fast food"],"telephone":"+92-336-2222081","priceRange":"Rs 499 – Rs 3,220","acceptsReservations":true,
+{"@context":"https://schema.org","@type":"Restaurant","name":"Flame Up","slogan":"Grill is old, we like it flamed","servesCuisine":["Pizza","Burgers","Wings","Fast food"],"telephone":"+92-336-2222081","priceRange":"Rs 499 – Rs 3,220","acceptsReservations":true,
 "address":{"@type":"PostalAddress","streetAddress":"1st Floor, Jahangir Khan Plaza, near Shaheen Chemist, Sabzi Mandi Mor, G.T. Road","addressLocality":"Haripur","addressRegion":"Khyber Pakhtunkhwa","addressCountry":"PK"},
 "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"12:00","closes":"23:59"}],
 "sameAs":["https://www.tiktok.com/@flameup_haripur","https://www.instagram.com/flameup_haripur/","https://www.facebook.com/p/Flame-Up-61565751334650/"]}
@@ -34,6 +34,7 @@
       <a href="#new">New</a>
       <a href="#deals">Deals</a>
       <a href="#pizza">Pizza</a>
+      <a href="#kitchen">Kitchen</a>
       <a href="#rooftop">Rooftop</a>
       <a href="#visit">Visit</a>
     </nav>
@@ -75,8 +76,8 @@
 
 <section class="ticker" aria-label="Today at Flame Up">
   <div class="ticker-track">
-    <span>🔥 New: Chicken Cheese Stuffed Pizza</span><span>Doner Pizza from Rs 1,420</span><span>Blazed Beast Burger Rs 499</span><span>Club Sandwich deal Rs 580</span><span>Birthday setups on the rooftop</span><span>Order on WhatsApp 0336-2222081</span>
-    <span aria-hidden="true">🔥 New: Chicken Cheese Stuffed Pizza</span><span aria-hidden="true">Doner Pizza from Rs 1,420</span><span aria-hidden="true">Blazed Beast Burger Rs 499</span><span aria-hidden="true">Club Sandwich deal Rs 580</span><span aria-hidden="true">Birthday setups on the rooftop</span><span aria-hidden="true">Order on WhatsApp 0336-2222081</span>
+    <span>🔥 New: Chicken Cheese Stuffed Pizza</span><span>New: Beef Burger</span><span>Doner Pizza from Rs 1,420</span><span>Blazed Beast Burger Rs 499</span><span>Club Sandwich deal Rs 580</span><span>Birthday setups on the rooftop</span><span>Order on WhatsApp 0336-2222081</span>
+    <span aria-hidden="true">🔥 New: Chicken Cheese Stuffed Pizza</span><span aria-hidden="true">New: Beef Burger</span><span aria-hidden="true">Doner Pizza from Rs 1,420</span><span aria-hidden="true">Blazed Beast Burger Rs 499</span><span aria-hidden="true">Club Sandwich deal Rs 580</span><span aria-hidden="true">Birthday setups on the rooftop</span><span aria-hidden="true">Order on WhatsApp 0336-2222081</span>
   </div>
 </section>
 
@@ -86,7 +87,7 @@
     <h2 id="new-h" class="title">New &amp; hot</h2>
     <div class="bento">
       <article class="tile tile-big">
-        <img src="img/table.webp" width="720" height="720" alt="Flame Up table with pizza, zinger burgers and a cold drink" loading="lazy">
+        <img src="img/mega-spread.webp" width="720" height="720" alt="Flame Up pizza with cold drinks, fries and dip on a table" loading="lazy">
         <div class="tile-body">
           <span class="sticker red">Limited time</span>
           <h3>Mega Deal</h3>
@@ -153,7 +154,7 @@
     <h2 id="pizza-h" class="title">Signature pizzas</h2>
     <div class="pizzas">
       <article class="pz">
-        <img src="img/pizza-oven.webp" width="720" height="720" alt="Pizza coming out of the conveyor oven at Flame Up" loading="lazy">
+        <img src="img/stuffed-cheesepull.webp" width="720" height="720" alt="Long cheese pull from a Flame Up stuffed crust pizza" loading="lazy">
         <div class="pz-body">
           <span class="sticker red">New</span>
           <h3>Chicken Cheese Stuffed Pizza</h3>
@@ -167,7 +168,7 @@
         </div>
       </article>
       <article class="pz">
-        <img src="img/pizza-toppings.webp" width="720" height="720" alt="Doner pizza being topped by hand in the Flame Up kitchen" loading="lazy">
+        <img src="img/pizza-top.webp" width="720" height="720" alt="Flame Up pizza with olives and chicken, fresh from the oven" loading="lazy">
         <div class="pz-body">
           <span class="sticker red">New</span>
           <h3>Doner Pizza</h3>
@@ -179,6 +180,30 @@
           </fieldset>
           <button class="add wide" type="button" data-add-size="sz-doner" data-id="doner" data-name="Doner Pizza">Add to order +</button>
         </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec kitchen" id="kitchen" aria-labelledby="kitchen-h">
+  <div class="wrap">
+    <p class="eyebrow yellow">Straight from our kitchen</p>
+    <h2 id="kitchen-h" class="title light">Kitchen favourites</h2>
+    <div class="kgrid">
+      <article class="kcard">
+        <img src="img/beef-burger.webp" width="720" height="600" alt="Flame Up Beef Burger with cheese and tomato on a plate" loading="lazy">
+        <div class="kbody"><span class="sticker red">New</span><h3>Beef Burger</h3><p>Our new king of burgers: a juicy beef patty, cheese and fresh veg.</p>
+        <a class="ask" href="https://wa.me/923362222081?text=Assalam%20o%20Alaikum%20Flame%20Up%2C%20what%20is%20the%20price%20of%20the%20Beef%20Burger%3F" target="_blank" rel="noopener">Ask price on WhatsApp</a></div>
+      </article>
+      <article class="kcard">
+        <img src="img/pizza-stacker.webp" width="720" height="600" alt="Flame Up Pizza Stacker in a box with fries on top" loading="lazy">
+        <div class="kbody"><h3>Pizza Stacker</h3><p>Layers of cheesy, saucy goodness, stacked and loaded with fries.</p>
+        <a class="ask" href="https://wa.me/923362222081?text=Assalam%20o%20Alaikum%20Flame%20Up%2C%20what%20is%20the%20price%20of%20the%20Pizza%20Stacker%3F" target="_blank" rel="noopener">Ask price on WhatsApp</a></div>
+      </article>
+      <article class="kcard">
+        <img src="img/grilled-bite.webp" width="720" height="600" alt="Flame Up Special Grilled Bite Pizza on the rooftop table" loading="lazy">
+        <div class="kbody"><h3>Grilled Bite Pizza</h3><p>The Flame Up special: grilled chicken bites with a creamy drizzle.</p>
+        <a class="ask" href="https://wa.me/923362222081?text=Assalam%20o%20Alaikum%20Flame%20Up%2C%20what%20is%20the%20price%20of%20the%20Grilled%20Bite%20Pizza%3F" target="_blank" rel="noopener">Ask price on WhatsApp</a></div>
       </article>
     </div>
   </div>

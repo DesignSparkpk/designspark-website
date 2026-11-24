@@ -42,4 +42,10 @@ TikTok also shows a **rooftop** used for birthdays, anniversaries and events.
 Single page, Flame Up green + yellow, bold street-food style. Hero: their TikTok video (desktop: 3-video wall), logo cut out with Adobe. Deals with tabs, sized pizzas, WhatsApp cart (order type, address, totals), rooftop events, visit info.
 Checks: Lighthouse mobile 98/100/100/100, desktop 100×4; axe 0; HTML 0 errors; no responsive issues 320–1920 px.
 
-**Media note:** the hero pizza montage carries a food creator's watermark ("Explorewithjawad"). Ask Flame Up for their original clips or the creator's permission before going live. Do not crop the watermark out.
+**Media:** hero montage and photos now come only from Flame Up's own TikTok videos (stuff crust pizza, cheese pull, Blazing Combo, wings, beef burger, pizza stacker, grilled bite pizza, rooftop). The earlier clip with a food creator's watermark ("Explorewithjawad") is no longer used. Stills were auto-toned with Adobe. Ask the owner for original full-quality clips before going live.
+
+TikTok reach (24 Nov 2026): 147 videos, ~2.03 million total views, ~13.8K average per video, top video 147K views.
+
+## Pitch kit (pitch/)
+- FlameUp-Website-Proposal.pdf: 2-page proposal (price and contact left blank to fill in)
+- cold-message.md: WhatsApp message in Roman Urdu and English, follow-up, replies to objections

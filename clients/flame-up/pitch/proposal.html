@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Website proposal for Flame Up Haripur</title>
+<style>
+@font-face{font-family:"Anton";src:url(../site/fonts/anton-latin.woff2) format("woff2")}
+@font-face{font-family:"Jakarta";font-weight:400 800;src:url(../site/fonts/plus-jakarta-sans-latin.woff2) format("woff2")}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+body{margin:0;font:400 9.6pt/1.42 "Jakarta",Arial,sans-serif;color:#10140f;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;padding:11mm 14mm 14mm;position:relative;overflow:hidden;page-break-after:always;background:#fff7e3}
+.page:last-child{page-break-after:auto}
+h1,h2,.big{font-family:"Anton",Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;margin:0}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm}
+.top .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#0b5427}
+.top img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 2px #fbbb11}
+.top .by{font-size:9pt;color:#4a5248;text-align:right}
+.hero{background:#073d22;color:#fff;border:3px solid #10140f;border-radius:16px;box-shadow:5px 5px 0 #10140f;padding:6mm 7mm;margin-bottom:5mm}
+.hero h1{font-size:28pt;line-height:1;color:#fbbb11}
+.hero p{margin:6px 0 0;font-size:10.5pt;color:#e3ede1;max-width:150mm}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin-bottom:5mm}
+.stat{background:#fff;border:2px solid #10140f;border-radius:12px;padding:2.5mm;text-align:center}
+.stat .big{font-size:19pt;color:#0b5427;line-height:1.1}
+.stat span{font-size:8.5pt;color:#4a5248}
+h2{font-size:14.5pt;color:#0b5427;margin:0 0 2mm}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+ul{margin:0;padding-left:16px}
+li{margin:0 0 3px}
+.box{background:#fff;border:2px solid #10140f;border-radius:12px;padding:4mm}
+.shot{border:2px solid #10140f;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 #10140f;background:#000}
+.shot img{display:block;width:100%}
+.shots{display:grid;grid-template-columns:2.6fr 1fr;gap:5mm;margin-top:5mm;align-items:start}
+.shot.tall img{height:62mm;object-fit:cover;object-position:top}
+.cap{font-size:8.5pt;color:#4a5248;margin-top:2mm}
+table{width:100%;border-collapse:collapse;font-size:10pt}
+th,td{text-align:left;padding:4px 7px;border-bottom:1px solid #d8cfb5;vertical-align:top}
+th{background:#073d22;color:#fff;font-weight:700}
+td.yes{color:#0b5427;font-weight:800}
+td.no{color:#b3261e;font-weight:800}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{background:#fff;border:2px solid #10140f;border-radius:10px;padding:3.5mm;counter-increment:s;font-size:9.5pt;margin:0}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fbbb11;border:2px solid #10140f;font-weight:800;margin-bottom:4px}
+.price{background:#fbbb11;border:3px solid #10140f;border-radius:14px;box-shadow:5px 5px 0 #10140f;padding:4mm 6mm}
+.price p{margin:4px 0}
+.price .big{font-size:20pt}
+.line{display:inline-block;min-width:45mm;border-bottom:2px solid #10140f}
+.foot{position:absolute;left:14mm;right:14mm;bottom:6mm;display:flex;justify-content:space-between;font-size:8.5pt;color:#4a5248}
+.mt{margin-top:5mm}
+</style>
+</head>
+<body>
+
+<section class="page">
+  <div class="top">
+    <div class="brand"><img src="../site/img/logo-badge-160.png" alt=""> Flame Up Haripur</div>
+    <div class="by">Website proposal<br>by DesignSpark</div>
+  </div>
+
+  <div class="hero">
+    <h1>2 million people watched.<br>Where do they order?</h1>
+    <p>Flame Up's TikTok videos have been watched more than 2 million times. Today those viewers have no website to see the full menu, deals or the rooftop, and no simple way to order. This website turns that attention into orders.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="big">2M+</div><span>TikTok views on 147 videos</span></div>
+    <div class="stat"><div class="big">13.8K</div><span>average views per video</span></div>
+    <div class="stat"><div class="big">79.5K</div><span>TikTok likes</span></div>
+    <div class="stat"><div class="big">0</div><span>websites today</span></div>
+  </div>
+
+  <div class="two">
+    <div class="box">
+      <h2>Your competitors are online</h2>
+      <table>
+        <tr><th>On GT Road</th><th>Website</th></tr>
+        <tr><td>Love n' Grill</td><td class="yes">lovengrill.pk</td></tr>
+        <tr><td>Flame On</td><td class="yes">flameon.pk</td></tr>
+        <tr><td>Flame Up</td><td class="no">None yet</td></tr>
+      </table>
+      <p class="cap">When people search "pizza Haripur" or "rooftop Haripur", these websites show up. Flame Up does not.</p>
+    </div>
+    <div class="box">
+      <h2>What the website does</h2>
+      <ul>
+        <li><b>Video hero</b> made from Flame Up's own kitchen footage</li>
+        <li><b>All deals and pizzas</b> with prices and sizes</li>
+        <li><b>Order on WhatsApp:</b> customers add items, the full order with total lands on 0336-2222081</li>
+        <li><b>Rooftop events</b>: birthday and anniversary bookings</li>
+        <li><b>Direct orders, no commission</b> on regular customers</li>
+        <li>Map, call, timings, TikTok and Instagram links</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="shots">
+    <div><div class="shot"><img src="desktop-hero.jpg" alt="Flame Up website home screen on a laptop"></div><p class="cap">Home screen: Flame Up videos with the logo on top.</p></div>
+    <div><div class="shot tall"><img src="mobile-order.jpg" alt="Flame Up website order screen on a phone"></div><p class="cap">Order screen on a phone.</p></div>
+  </div>
+
+  <div class="foot"><span>Concept design prepared for Flame Up, Haripur</span><span>1 / 2</span></div>
+</section>
+
+<section class="page">
+  <div class="top">
+    <div class="brand"><img src="../site/img/logo-badge-160.png" alt=""> Flame Up Haripur</div>
+    <div class="by">Website proposal<br>by DesignSpark</div>
+  </div>
+
+  <h2>How a customer orders</h2>
+  <ol class="steps">
+    <li>Watches a Flame Up video on TikTok and taps the link in bio</li>
+    <li>Picks deals and pizzas on the website</li>
+    <li>Chooses delivery, pick-up or dine-in and adds the address</li>
+    <li>Presses Send: the order and total arrive on Flame Up's WhatsApp</li>
+  </ol>
+
+  <div class="shots mt">
+    <div><div class="shot"><img src="desktop-deals.jpg" alt="Deals section of the Flame Up website"></div><p class="cap">Deals with real menu prices, one tap to add.</p></div>
+    <div><div class="shot tall"><img src="mobile-hero.jpg" alt="Flame Up website on a phone"></div><p class="cap">Built for phones first.</p></div>
+  </div>
+
+  <div class="two mt">
+    <div class="box">
+      <h2>Quality, tested</h2>
+      <ul>
+        <li>Google Lighthouse: <b>98 to 100</b> on phones and computers</li>
+        <li>Works on every screen from small phones to large monitors</li>
+        <li>Fast: menu and photos are optimised for mobile data</li>
+        <li>Shows up properly on Google with your address, hours and menu type</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>What we need from you</h2>
+      <ul>
+        <li>Confirm prices and any new items (Beef Burger, Pizza Stacker)</li>
+        <li>Original video clips and photos in full quality</li>
+        <li>A domain name, for example flameup.pk</li>
+        <li>Who answers WhatsApp orders and delivery area</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="price mt">
+    <div class="big">Investment</div>
+    <p>Website design and build: Rs <span class="line">&nbsp;</span> &nbsp;&nbsp; Domain and hosting (yearly): Rs <span class="line">&nbsp;</span></p>
+    <p>Ready in <span class="line">&nbsp;</span> days after we receive your content. Includes one round of changes and help to add the link to your TikTok and Instagram bio.</p>
+  </div>
+
+  <div class="foot"><span>DesignSpark · WhatsApp: <span class="line">&nbsp;</span></span><span>2 / 2</span></div>
+</section>
+
+</body>
+</html>
