@@ -58,11 +58,13 @@ ICONS = {
     "lock": '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
 }
 
+WA_PATH = '<path fill="currentColor" stroke="none" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.5 2.4 3.6 5.8 5c2.2.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5s.3-1.3.2-1.5-.3-.2-.6-.4z"/>'
+
 DUO = {'apply': '<circle cx="16.5" cy="16.5" r="5" fill="#fbbd13" stroke="none"/>', 'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#fbbd13" stroke="none" opacity=".45"/>', 'book': '<path d="M6.5 2H20v15H6.5A2.5 2.5 0 0 0 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="#fbbd13" stroke="none" opacity=".45"/>', 'pin': '<circle cx="12" cy="10" r="3.2" fill="#fbbd13" stroke="none"/>', 'steps': '<circle cx="6" cy="8" r="4" fill="#fbbd13" stroke="none" opacity=".6"/><circle cx="6" cy="18" r="4" fill="#fbbd13" stroke="none" opacity=".6"/>', 'fees': '<circle cx="12" cy="12" r="3.5" fill="#fbbd13" stroke="none"/>', 'megaphone': '<path d="m3 11 18-5v12L3 14v-3z" fill="#fbbd13" stroke="none" opacity=".5"/>', 'phone': '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" fill="#fbbd13" stroke="none" opacity=".4"/>', 'school': '<path d="M5 21V10l7-5 7 5v11z" fill="#fbbd13" stroke="none" opacity=".4"/>', 'blocks': '<circle cx="17.5" cy="17.5" r="3.5" fill="#fbbd13" stroke="none"/>', 'cap': '<path d="M22 10 12 5 2 10l10 5 10-5z" fill="#fbbd13" stroke="none" opacity=".5"/>', 'star': '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="#fbbd13" stroke="none" opacity=".55"/>', 'trophy': '<path d="M18 2H6v7a6 6 0 0 0 12 0V2z" fill="#fbbd13" stroke="none" opacity=".55"/>', 'help': '<circle cx="12" cy="12" r="10" fill="#fbbd13" stroke="none" opacity=".35"/>', 'file': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="#fbbd13" stroke="none" opacity=".35"/>', 'flask': '<path d="M6.5 15h11l2.5 3a2 2 0 0 1-1.8 3H5.8A2 2 0 0 1 4 18z" fill="#fbbd13" stroke="none" opacity=".6"/>', 'pencil': '<path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z" fill="#fbbd13" stroke="none" opacity=".45"/>', 'monitor': '<rect x="2" y="3" width="20" height="14" rx="2" fill="#fbbd13" stroke="none" opacity=".35"/>', 'users': '<circle cx="9" cy="7" r="4" fill="#fbbd13" stroke="none" opacity=".55"/>', 'library': '<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z" fill="#fbbd13" stroke="none" opacity=".45"/>', 'bus': '<rect x="4" y="3" width="16" height="8" rx="2" fill="#fbbd13" stroke="none" opacity=".45"/>'}
 
 SPRITE = '<svg class="sprite" aria-hidden="true">' + "".join(
     f'<symbol id="i-{k}" viewBox="0 0 24 24">{DUO.get(k, "")}{v}</symbol>' for k, v in ICONS.items()
-) + "</svg>"
+) + f'<symbol id="i-wa" viewBox="0 0 32 32">{WA_PATH}</symbol>' + "</svg>"
 
 
 def icon(name):
@@ -92,13 +94,9 @@ HEAD = """<!DOCTYPE html>
 {sprite}
 <a class="skip" href="#main" data-ur="مواد پر جائیں">Skip to content</a>
 
-<aside class="topbar" aria-label="Contact bar">
+<aside class="notice-strip" aria-label="Admissions notice">
   <div class="container">
-    <div class="left">
-      <a href="tel:+923005148824">{i_phone}<span class="ltr">{phone}</span></a>
-      <a href="{wa}" target="_blank" rel="noopener">{i_chat}<span>WhatsApp</span></a>
-      <a class="hide-sm" href="https://www.facebook.com/bpsharipur/" target="_blank" rel="noopener">{i_facebook}<span>Facebook</span></a>
-    </div>
+    <p><b data-ur="داخلے جاری ہیں">Admissions open</b><span class="hide-sm" data-ur="پلے گروپ تا ایف ایس سی · پری کیڈٹ گریڈ ۵ تا ۹"> · Playgroup to FSc · Pre-cadet Grades 5–9</span> <a href="admissions.html#apply" data-ur="اپلائی کریں ←">Apply →</a></p>
     <button class="lang" id="langBtn" type="button" lang="ur">اردو</button>
   </div>
 </aside>
@@ -110,13 +108,17 @@ HEAD = """<!DOCTYPE html>
       <span class="long"><b data-ur="بیکن پبلک اسکول اینڈ کالج">Beacon Public School &amp; College</b><small data-ur="ہری پور، خیبر پختونخوا">Haripur, Khyber Pakhtunkhwa</small></span>
       <span class="short"><span data-ur="بیکن پبلک اسکول">Beacon Public School</span><span data-ur="اینڈ کالج، ہری پور">&amp; College, Haripur</span></span>
     </a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">{i_menu}</button>
     <nav class="main" id="mainNav" aria-label="Main">
       <ul>
 {nav}
       </ul>
     </nav>
-    <a class="btn btn-gold apply-top" href="admissions.html#apply" data-ur="ابھی داخلہ لیں">Apply now</a>
+    <div class="actions">
+      <a class="icon-btn call" href="tel:+923005148824" aria-label="Call 0300-5148824">{i_phone}</a>
+      <a class="icon-btn wa" href="{wa}" target="_blank" rel="noopener" aria-label="WhatsApp 0300-5148824">{i_wa}<span class="wa-label">WhatsApp</span></a>
+      <a class="btn btn-gold apply-top" href="admissions.html#apply" data-ur="ابھی داخلہ لیں">Apply now</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">{i_menu}</button>
+    </div>
   </div>
 </header>
 
@@ -132,7 +134,7 @@ CTA = """
     </div>
     <div class="cta-row">
       <a class="btn btn-navy" href="admissions.html#apply" data-ur="آن لائن اپلائی کریں">Apply online</a>
-      <a class="btn btn-outline" href="{wa}" target="_blank" rel="noopener">WhatsApp <span class="ltr">0300&#8209;5148824</span></a>
+      <a class="btn btn-outline" href="{wa}" target="_blank" rel="noopener">{iwa}WhatsApp <span class="ltr">0300&#8209;5148824</span></a>
     </div>
   </div>
 </section>
@@ -179,11 +181,6 @@ FOOT = """</main>
   </div>
 </footer>
 
-<aside aria-label="Quick WhatsApp chat">
-<a class="fab" href="{wa}" target="_blank" rel="noopener" aria-label="Chat with Beacon on WhatsApp">
-  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.5 2.4 3.6 5.8 5c2.2.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5s.3-1.3.2-1.5-.3-.2-.6-.4z"/></svg>
-</a>
-</aside>
 
 <script src="app.js" defer></script>
 </body>
@@ -225,11 +222,11 @@ def build():
         html = HEAD.format(
             title=meta["title"], desc=meta["desc"], phone=PHONE, wa=WA,
             nav=nav_html(meta.get("nav") or ""), extra_head=meta.get("head", ""), sprite=SPRITE,
-            i_phone=icon("phone"), i_chat=icon("chat"), i_facebook=icon("facebook"), i_menu=icon("menu"),
+            i_phone=icon("phone"), i_wa=icon("wa"), i_menu=icon("menu"),
         )
         html += render(body).rstrip() + "\n"
         if meta.get("cta", True):
-            html += CTA.format(wa=WA)
+            html += CTA.format(wa=WA, iwa=icon("wa"))
         html += FOOT.format(phone=PHONE, wa=WA, footnav=nav_html(None, "          "))
         (OUT / page.name).write_text(html, encoding="utf-8")
         keep.add(page.name)

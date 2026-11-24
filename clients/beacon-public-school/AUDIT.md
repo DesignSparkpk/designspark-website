@@ -1,5 +1,12 @@
 # Beacon website: professional audit and competitor comparison
 
+## Update 3: own header + responsive pass (24 Nov 2026)
+- Replaced the PPSC-like dark contact bar with Beacon's own gold "Admissions open" strip (Apply link + Urdu toggle); call and WhatsApp (real WhatsApp logo) are round buttons inside the header
+- Removed the floating WhatsApp button that covered content on phones
+- Automated responsive check: 6 pages × 14 widths (320 to 1920 px) × English and Urdu, checking sideways scrolling, elements off-screen, text overflowing its box, header collisions and tap-target size: **no issues**
+- Fixed from the check: header wrapping on 320 px phones, small language button, school name wrapping at 1440 px, duplicate crest on tablets, "5–9" reversed in Urdu, mixed fonts in Urdu stats
+- Lighthouse still 100 / 100 / 100 / 100; 0 HTML and axe errors
+
 ## Update 2: redesign (24 Nov 2026)
 Feedback: the multi-page version looked complicated next to PPSC. Redesigned with one clean design system:
 - One font (Plus Jakarta Sans, self-hosted), one colour family (navy, Beacon blue, gold), one card style, line icons instead of emojis

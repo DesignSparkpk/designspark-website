@@ -23,14 +23,12 @@ a{color:inherit}
 .skip:focus{transform:none}
 .ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 a[href^="tel:"],.ltr{direction:ltr;unicode-bidi:isolate}
-.topbar{background:var(--navy-deep);color:#d5deeb;font-size:.875rem}
-.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:40px}
-.topbar .left{display:flex;gap:20px;align-items:center}
-.topbar a{display:inline-flex;gap:7px;align-items:center;text-decoration:none}
-.topbar a:hover{color:#fff}
-.topbar .ic{width:16px;height:16px}
-.lang{background:transparent;border:1px solid #ffffff55;color:#fff;border-radius:999px;padding:2px 14px;cursor:pointer;font:inherit}
-.lang:hover{background:#ffffff1a}
+.notice-strip{background:var(--gold);color:var(--navy);font-size:.88rem}
+.notice-strip .container{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:38px}
+.notice-strip p{margin:0;line-height:1.4}
+.notice-strip a{font-weight:800;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.lang{background:transparent;border:1.5px solid var(--navy);color:var(--navy);border-radius:999px;padding:1px 14px;cursor:pointer;font:inherit;font-weight:700;flex:none}
+.lang:hover{background:#ffffff66}
 header.site{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 header.site .container{display:flex;align-items:center;gap:18px;min-height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-inline-end:auto}
@@ -41,18 +39,24 @@ nav.main ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
 nav.main a{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--navy);font-weight:600;font-size:.95rem}
 nav.main a:hover{background:var(--soft)}
 nav.main a[aria-current="page"]{background:var(--navy);color:#fff}
-.menu-btn{display:none;width:46px;height:46px;background:#fff;border:1px solid var(--line);border-radius:50%;color:var(--navy);cursor:pointer;place-items:center;padding:0}
+.actions{display:flex;align-items:center;gap:10px;flex:none}
+.icon-btn{display:inline-grid;grid-auto-flow:column;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;border-radius:999px;border:1.5px solid var(--line);color:var(--navy);text-decoration:none;font-weight:700;padding:0 10px}
+.icon-btn .ic{width:20px;height:20px}
+.icon-btn:hover{border-color:var(--navy)}
+.icon-btn.wa{background:var(--wa);border-color:var(--wa);color:#fff;padding:0 16px}
+.icon-btn.wa:hover{background:#0f6534}
+.menu-btn{display:none;width:44px;height:44px;background:#fff;border:1px solid var(--line);border-radius:50%;color:var(--navy);cursor:pointer;place-items:center;padding:0}
 .menu-btn .ic{width:22px;height:22px}
-@media (max-width:1020px){
+@media (max-width:1100px){
 .menu-btn{display:grid}
+.icon-btn.wa{padding:0 10px}
+.wa-label{display:none}
 nav.main{position:absolute;inset:76px 0 auto 0;background:#fff;border-bottom:1px solid var(--line);display:none;box-shadow:var(--shadow)}
 nav.main.open{display:block}
 nav.main ul{flex-direction:column;padding:10px 20px 18px}
 header.site .apply-top{display:none}
 }
 @media (max-width:560px){
-.topbar .hide-sm{display:none}
-.topbar .container{font-size:.8rem}
 .brand b{font-size:.95rem}
 }
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 24px;font:inherit;font-weight:700;line-height:1.2;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
@@ -94,7 +98,7 @@ linear-gradient(160deg,var(--navy) 35%,var(--navy-2))}
 .stat{padding:24px 26px;border-inline-end:1px solid var(--line)}
 .stat:last-child{border-inline-end:0}
 .stat b{display:block;font-size:1.9rem;line-height:1.2;color:var(--navy);font-weight:800;letter-spacing:-.02em}
-.stat span{color:var(--muted);font-size:.92rem}
+.stat>span{color:var(--muted);font-size:.92rem}
 @media (max-width:760px){
 .stats .grid{grid-template-columns:1fr 1fr}
 .stat{padding:18px}
@@ -234,8 +238,6 @@ footer a:hover{color:#fff;text-decoration:underline}
 footer .bottom{border-top:1px solid #ffffff1a;margin-top:44px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem}
 @media (max-width:900px){footer .cols{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){footer .cols{grid-template-columns:1fr}}
-.fab{position:fixed;inset-inline-end:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 25px -6px #0008}
-.fab svg{width:28px;height:28px}
 .mt-24{margin-top:24px}
 .center{text-align:center}
 .sprite{position:absolute;width:0;height:0;overflow:hidden}
@@ -270,7 +272,7 @@ h2.title{font-size:1.75rem}
 .stats{margin-top:-74px}
 .stat{padding:16px}
 .stat b{font-size:1.6rem}
-.stat span{font-size:.82rem;line-height:1.4;display:block}
+.stat>span{font-size:.82rem;line-height:1.4;display:block}
 .quick{gap:12px;margin-top:40px}
 .quick a{padding:18px 10px;gap:4px}
 .quick .ico{width:56px;height:56px;margin-bottom:6px}
@@ -288,7 +290,22 @@ h2.title{font-size:1.75rem}
 .campus{padding:20px}
 .faq summary{font-size:.98rem;padding:16px 0}
 footer{padding:48px 0 24px}
-.fab{width:50px;height:50px;bottom:14px;inset-inline-end:14px}
 }
 .nav-apply{display:none}
-@media (max-width:1020px){.nav-apply{display:block;margin-top:8px}.nav-apply a.btn{display:flex;color:var(--navy)}}
+@media (max-width:1100px){.nav-apply{display:block;margin-top:8px}.nav-apply a.btn{display:flex;color:var(--navy)}}
+@media (max-width:600px){.hide-sm{display:none}.notice-strip{font-size:.82rem}}
+.lang{min-height:32px;padding:3px 16px}
+@media (max-width:380px){
+header.site .container{gap:8px}
+.icon-btn.call{display:none}
+.brand{gap:8px}
+.brand img{width:36px}
+.brand .short{font-size:.9rem}
+.brand .short span+span{font-size:.76rem}
+.actions{gap:6px}
+}
+.wa-label{display:none}
+.icon-btn.wa{padding:0 10px}
+.brand b{white-space:nowrap}
+@media (max-width:860px){.crest{display:none}}
+html[lang=ur] .stat b{font-family:var(--font);line-height:1.25;font-size:1.6rem}
