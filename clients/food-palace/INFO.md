@@ -24,11 +24,11 @@ Research date: 24 Nov 2026. Sources are public listings; items marked ⚠️ nee
 | Google Maps | Not checked (verify: does the listing have a "Website" button?) |
 
 ## Menu (partial: full menu blocked on Foodpanda)
-Known items: Zinger Burger, Chicken Tikka Pizza, pasta, Ice Cream Chaat (signature item, featured by TikTok food reviewers), Kulfa / kulfi (Facebook video), Lahori Dahi Baray (seen on a Food Palace Foodpanda listing ⚠️ may be another branch).
+Known items: Zinger Burger, Chicken Tikka Pizza, pasta, ⚠️ Ice Cream Chaat (UNCONFIRMED: only from an auto-generated TikTok topic page, video not seen), ⚠️ Kulfa / kulfi (Facebook video title, not seen), Lahori Dahi Baray (seen on a Food Palace Foodpanda listing ⚠️ may be another branch).
 Needed: full menu with prices, deals, categories, sizes. **Get from owner or screenshot the Foodpanda menu on a phone.**
 
 ## What customers say
-- 👍 Good taste, good packaging, "best fast food corner", recommended by local TikTok food reviewers.
+- 👍 Good taste, good packaging, "best fast food corner".
 - 👎 Some say prices are high; some say taste is average or don't like the sauces; a few complain about staff.
 
 ## Why they need a website (pitch points)
@@ -36,11 +36,10 @@ Needed: full menu with prices, deals, categories, sizes. **Get from owner or scr
 2. **No website, no Instagram, and a TikTok bio with no link.** 1,000+ TikTok followers have nowhere to see the full menu or order.
 3. **Confusing location info online** (3 different addresses). A site with a Google Map pin fixes it.
 4. **Price complaints** → a site can highlight deals and family combos, which shows value.
-5. Signature Ice Cream Chaat + kulfa = shareable dessert content for the site's hero and gallery.
 
 ## Site plan (concept)
 - Style: Claymorphism (fun, bright, food-friendly), brand colours to match their logo once we have it.
-- Sections: hero with signature items + "Order on WhatsApp" → Deals → Full menu by category → Ice Cream Chaat feature → Reviews → Location map + hours → TikTok/Facebook links.
+- Sections: hero with their best-selling items (confirm with owner) + "Order on WhatsApp" → Deals → Full menu by category → Ice Cream Chaat feature → Reviews → Location map + hours → TikTok/Facebook links.
 - Ordering: tap item → add to cart → sends a ready-made WhatsApp message to 0300 9837650 (no commission, no backend).
 
 ## Still to collect
