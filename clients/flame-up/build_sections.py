@@ -96,7 +96,8 @@ def item_attrs(item_id, name, price, thumb="", icon="", color=""):
 NEW = [
     dict(id="mega", name="Mega Deal", price=2450, img="mega-spread", w=720, h=900, tag="Limited time", tagc="red",
          alt="Flame Up Special pizza in a pan, cut into slices",
-         desc="3 Zingers\u00a0· 1 Flameup Medium Special pizza\u00a0· 1.5 litre cold drink", big=True),
+         desc="3 Zingers\u00a0· 1 Flameup Medium Special pizza\u00a0· 1.5 litre cold drink", big=True,
+         chips=[("burger", "3 Zingers"), ("pizza", "1 Pizza"), ("drink", "1.5 L drink")]),
     dict(id="beast", name="Blazed Beast Burger", price=499, img="burger", w=720, h=720, tag="New flavour", tagc="",
          alt="Blazed Beast Burger with lettuce, tomato and cheese on a sesame bun", desc="Lettuce, tomato and cheese in a sesame bun"),
     dict(id="club", name="Club Sandwich Deal", price=580, img="club-sandwich", w=720, h=720, tag="", tagc="",
@@ -178,6 +179,9 @@ def build():
     for it in NEW:
         cls = "hot-card big" if it.get("big") else "hot-card"
         tag = f'<span class="sticker {it["tagc"]}">{it["tag"]}</span>' if it["tag"] else ""
+        if it.get("chips"):
+            tag += ('<ul class="inside" aria-label="In this deal">'
+                    + "".join(f'<li>{ic(i, "ic-s")}{esc(t)}</li>' for i, t in it["chips"]) + "</ul>")
         out.append(f'''      <article class="{cls}" {item_attrs(it["id"], it["name"], it["price"], thumb="img/thumb/" + it["img"] + ".webp")}>
         {tap(it["id"], it["name"], it["price"])}
         <img src="img/{it["img"]}.webp" width="{it["w"]}" height="{it["h"]}" alt="{esc(it["alt"])}" loading="lazy">

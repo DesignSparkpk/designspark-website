@@ -145,6 +145,9 @@ nav.main a:hover{background:#ffffff1f}
 .hot-card:hover img{transform:scale(1.04)}
 .hot-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,38,26,0) 30%,rgba(5,38,26,.65) 62%,rgba(5,38,26,.95) 100%)}
 .hot-card .sticker{position:absolute;top:16px;left:16px}
+.inside{position:absolute;top:16px;right:16px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.inside li{display:inline-flex;align-items:center;gap:7px;background:rgba(5,30,18,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid #ffffff2b;color:#fff;font-weight:700;font-size:.8rem;line-height:1;border-radius:999px;padding:5px 12px 5px 5px;box-shadow:0 6px 14px -8px #000c}
+.inside .ic-s{width:24px;height:24px;padding:4px;border-radius:50%;background:var(--y);color:var(--ink);stroke-width:2}
 .hot-body{padding:22px}
 .hot-card h3{font-family:var(--display);font-weight:400;font-size:1.8rem;line-height:1;text-transform:uppercase;margin:0 0 6px}
 .hot-card p{margin:0;color:#e4eee2;font-size:.95rem}
@@ -441,6 +444,9 @@ nav.main a:hover{background:#ffffff1f}
   .hot-card:not(.big) .buy{flex-direction:column;align-items:flex-start;gap:8px;padding-top:8px}
   .hot-card:not(.big) .price{font-size:1.35rem}
   .hot-card .sticker{top:12px;left:12px}
+  .inside{top:12px;right:12px;gap:5px}
+  .inside li{font-size:.74rem;padding:4px 10px 4px 4px}
+  .inside .ic-s{width:22px;height:22px}
 
   .deals{grid-template-columns:1fr 1fr;gap:12px}
   .deal{min-height:0;padding:18px 14px 14px;border-radius:20px}
