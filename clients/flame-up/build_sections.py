@@ -94,8 +94,8 @@ def item_attrs(item_id, name, price, thumb="", icon="", color=""):
 
 # ---------- menu ----------
 NEW = [
-    dict(id="mega", name="Mega Deal", price=2450, img="mega-spread", w=720, h=720, tag="Limited time", tagc="red",
-         alt="Flame Up pizza with cold drinks, fries and dip on a table",
+    dict(id="mega", name="Mega Deal", price=2450, img="mega-spread", w=720, h=900, tag="Limited time", tagc="red",
+         alt="Flame Up Special pizza in a pan, cut into slices",
          desc="3 Zingers\u00a0· 1 Flameup Medium Special pizza\u00a0· 1.5 litre cold drink", big=True),
     dict(id="beast", name="Blazed Beast Burger", price=499, img="burger", w=720, h=720, tag="New flavour", tagc="",
          alt="Blazed Beast Burger with lettuce, tomato and cheese on a sesame bun", desc="Lettuce, tomato and cheese in a sesame bun"),
@@ -125,15 +125,15 @@ DEALS = {
 
 PIZZAS = [
     dict(id="stuffed", name="Chicken Cheese Stuffed Pizza", img="stuffed-cheesepull",
-         alt="Long cheese pull from a Flame Up stuffed crust pizza", desc="Cheese-stuffed crust loaded with chicken."),
+         alt="Cheese pulling from a slice of Flame Up stuffed crust pizza lifted from the pan", desc="Cheese-stuffed crust loaded with chicken."),
     dict(id="doner", name="Doner Pizza", img="pizza-top",
-         alt="Flame Up pizza with olives and chicken, fresh from the oven", desc="Doner chicken, creamy sauce and olives."),
+         alt="Slice lifted from a Flame Up pizza topped with creamy sauce and olives", desc="Doner chicken, creamy sauce and olives."),
 ]
 SIZES = [("M", 1420), ("L", 1890), ("XL", 2599)]
 
 KITCHEN = [
     ("Beef Burger", "beef-burger", "Flame Up Beef Burger with cheese and tomato on a plate", "Finally launched at Flame Up: a juicy beef patty with cheese and fresh veg.", True),
-    ("Pizza Stacker", "pizza-stacker", "Flame Up Pizza Stacker in a box with fries on top", "Layers of cheesy, saucy goodness, stacked and loaded with fries.", False),
+    ("Pizza Stacker", "pizza-stacker", "Flame Up Pizza Stacker in an open box, topped with fries", "Layers of cheesy, saucy goodness, stacked and loaded with fries.", False),
     ("Grilled Bite Pizza", "grilled-bite", "Flame Up Special Grilled Bite Pizza on the rooftop table", "The Flame Up special: grilled chicken bites with a creamy drizzle.", False),
 ]
 
